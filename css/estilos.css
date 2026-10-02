@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root{
+    --bg:#09071a;
+    --surface:#11102a;
+    --surface2:#171535;
+    --white:#f8f7ff;
+    --muted:#aaa7c4;
+    --purple:#6d4aff;
+    --violet:#9a78ff;
+    --pink:#ff4f87;
+    --line:rgba(255,255,255,.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{font-family:"DM Sans",Arial,sans-serif;background:#fff;color:#18152b;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.header{height:76px;position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 7%;background:rgba(9,7,26,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+.logo{font-family:"Space Grotesk";font-weight:700;color:#fff;font-size:19px}
+.logo span{display:inline-grid;place-items:center;width:38px;height:38px;margin-right:8px;border-radius:11px;background:linear-gradient(135deg,var(--purple),var(--pink));font-size:13px}
+.nav{display:flex;gap:25px;color:#d5d2e7;font-size:13px;font-weight:600}
+.nav a:hover{color:#fff}
+.menu-btn{display:none;background:none;border:0;color:#fff;font-size:24px}
+
+.hero{min-height:100vh;padding:150px 10% 90px;background:radial-gradient(circle at 80% 25%,rgba(109,74,255,.22),transparent 28%),radial-gradient(circle at 25% 80%,rgba(255,79,135,.12),transparent 30%),var(--bg);color:#fff;display:grid;grid-template-columns:1.2fr .8fr;gap:70px;align-items:center}
+.eyebrow,.section-head>span,.project-label{color:#9d87ff;font-size:11px;font-weight:700;letter-spacing:2px}
+.hero h1{font:700 clamp(52px,7vw,92px)/.95 "Space Grotesk";letter-spacing:-4px;margin:18px 0}
+.hero h1 span{background:linear-gradient(90deg,#9d80ff,#ff6396);-webkit-background-clip:text;color:transparent}
+.hero h2{font:600 25px "Space Grotesk";color:#dedbf0;margin-bottom:20px}
+.hero p{max-width:650px;color:var(--muted);font-size:17px}
+.actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;padding:13px 21px;border-radius:12px;font-weight:700;font-size:14px;transition:.25s;border:1px solid transparent}
+.btn:hover{transform:translateY(-3px)}
+.primary{background:linear-gradient(135deg,var(--purple),#8b69ff);color:#fff;box-shadow:0 12px 30px rgba(109,74,255,.28)}
+.ghost{border-color:rgba(255,255,255,.18);color:#fff}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:25px}
+.hero-tags span,.tech-list span{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:#cbc7e1;font-size:11px}
+.hero-card{position:relative;min-height:420px;border-radius:30px;background:linear-gradient(145deg,#1b1640,#0e0c22);border:1px solid rgba(157,128,255,.25);display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.glow{position:absolute;width:250px;height:250px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));filter:blur(65px);opacity:.3}
+.avatar{position:relative;width:150px;height:150px;border-radius:50%;display:grid;place-items:center;font:700 48px "Space Grotesk";background:linear-gradient(135deg,var(--purple),var(--pink));box-shadow:0 0 0 10px rgba(255,255,255,.04),0 20px 50px rgba(109,74,255,.35)}
+.hero-card-text{position:relative;text-align:center;margin-top:28px}.hero-card-text strong{display:block;font:700 20px "Space Grotesk"}.hero-card-text span{display:block;color:#aaa7c4;font-size:13px;margin-top:5px}
+.mini-stats{position:relative;display:flex;gap:28px;margin-top:30px}.mini-stats div{text-align:center}.mini-stats b{display:block;font:700 24px "Space Grotesk";color:#fff}.mini-stats small{color:#89859f;font-size:10px}
+
+.section{padding:105px 10%;background:#fff}
+.section-head{margin-bottom:48px}.section-head h2{font:700 clamp(34px,4vw,52px)/1.05 "Space Grotesk";margin-top:9px;letter-spacing:-2px}
+.about-grid,.goal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.about-box,.goal{padding:32px;border:1px solid #ebe9f3;border-radius:20px;background:#fff;box-shadow:0 12px 35px rgba(25,18,65,.05)}
+.about-box:hover,.goal:hover{transform:translateY(-5px);transition:.25s}
+.number,.goal strong{font:700 14px "Space Grotesk";color:var(--purple)}
+.about-box h3,.goal h3{font:700 22px "Space Grotesk";margin:16px 0 9px}.about-box p,.goal p{color:#66627a;font-size:14px}
+.dark-section{background:var(--bg);color:#fff}.dark-section .section-head h2{color:#fff}
+.timeline{max-width:850px;border-left:1px solid rgba(255,255,255,.13);margin-left:10px;padding-left:35px}
+.timeline-item{position:relative;padding:0 0 42px}.dot{position:absolute;left:-42px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 6px rgba(255,79,135,.12)}
+.timeline-item small{color:#9d87ff;font-weight:700;font-size:10px;letter-spacing:1.5px}.timeline-item h3{font:600 23px "Space Grotesk";margin:7px 0}.timeline-item p{color:#aaa7c4;font-size:14px}
+
+.project-section{background:#f7f6fb}.project-main{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}
+.browser{border-radius:18px;background:#fff;border:1px solid #dedbe9;box-shadow:0 25px 70px rgba(35,20,90,.13);overflow:hidden;transform:rotate(-1deg)}
+.browser-top{height:42px;display:flex;align-items:center;gap:7px;padding:0 15px;background:#f0eef6;border-bottom:1px solid #e1deeb;color:#8b879c;font-size:10px}.browser-top i{width:8px;height:8px;border-radius:50%;background:#c8c3d4}.browser-top span{margin-left:10px}
+.mock-app{min-height:370px;padding:28px;background:linear-gradient(145deg,#fff,#f7f2ff)}
+.mock-brand{color:#4f35e8;font-weight:800;font-size:13px}.mock-brand small{color:#8a8798;font-weight:500;margin-left:8px}.mock-app h3{font:700 32px "Space Grotesk";margin-top:35px}.mock-app p{color:#777286;font-size:13px}
+.shape-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:24px}.shape-grid span{padding:13px 8px;text-align:center;background:#fff;border:1px solid #ebe6fa;border-radius:10px;font-size:10px;color:#514d65}
+.result-mock{margin-top:15px;border-radius:12px;padding:15px 18px;background:linear-gradient(135deg,#4f35e8,#7c5cff);color:#fff;display:flex;justify-content:space-between;align-items:center}.result-mock b{font-size:10px;text-transform:uppercase;letter-spacing:1px}.result-mock strong{font-size:18px}
+.project-info h3{font:700 36px/1.1 "Space Grotesk";margin:10px 0 18px}.project-info p{color:#686477;font-size:14px;margin-bottom:13px}.tech-list{display:flex;gap:7px;flex-wrap:wrap;margin:22px 0}.tech-list span{background:#eee9ff;color:#553be1;border-color:#ded5ff}
+.feature-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0 26px}.feature-list div{display:flex;gap:10px;align-items:center;font-size:12px}.feature-list b{color:var(--pink)}
+
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:900px}.skill{position:relative;padding:22px 25px;border:1px solid #eae7f1;border-radius:16px}.skill b{font:700 18px "Space Grotesk";display:block}.skill span{color:#777286;font-size:12px}.skill em{position:absolute;right:22px;top:22px;color:var(--purple);font-style:normal;font-weight:700;font-size:11px}
+.goals{background:#f7f6fb}.goal strong{font-size:30px}.goal h3{margin-top:8px}
+
+.contact{background:linear-gradient(135deg,#4f35e8,#21164e);color:#fff}.contact-inner{display:grid;grid-template-columns:1fr .8fr;gap:70px;align-items:center}.contact h2{font:700 clamp(35px,5vw,60px)/1.02 "Space Grotesk";margin:12px 0}.contact p{color:#d4d0e6;font-size:14px}.contact-card{padding:28px;border:1px solid rgba(255,255,255,.16);border-radius:20px;background:rgba(0,0,0,.14)}.contact-card p{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.1)}.contact-card p:last-child{border-bottom:0}.contact-card b{display:inline-block;width:105px;color:#fff}
+footer{background:#080618;color:#858097;display:flex;justify-content:space-between;padding:25px 10%;font-size:11px}footer span{color:#fff;font-weight:700}
+
+.reveal{opacity:0;transform:translateY(25px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
+
+@media(max-width:900px){
+    .nav{display:none}.menu-btn{display:block}.nav.open{display:flex;position:absolute;top:76px;left:0;right:0;background:#0d0a24;padding:20px 7%;flex-direction:column;gap:15px}
+    .hero,.project-main,.contact-inner{grid-template-columns:1fr}.hero{padding-top:130px}.hero-card{min-height:330px}.about-grid,.goal-grid{grid-template-columns:1fr}.project-main{gap:35px}.browser{transform:none}
+}
+@media(max-width:600px){
+    .header{padding:0 5%}.hero,.section{padding-left:6%;padding-right:6%}.hero h1{letter-spacing:-2px}.hero h2{font-size:20px}.shape-grid{grid-template-columns:1fr 1fr}.skills-grid{grid-template-columns:1fr}.feature-list{grid-template-columns:1fr}footer{padding:22px 6%;display:block;text-align:center}footer p{margin-top:5px}
+}
+/* =====================================================
+   MIS TRABAJOS
+===================================================== */
+
+.trabajos-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-top: 45px;
+}
+
+.course-card {
+    position: relative;
+    min-height: 320px;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 31, 58, 0.95),
+            rgba(8, 14, 29, 0.98)
+        );
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.4s ease;
+}
+
+.course-card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -70px;
+    top: -70px;
+    background: #4f8cff;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.16;
+    transition: 0.4s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(79, 140, 255, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.course-card:hover::before {
+    opacity: 0.3;
+    transform: scale(1.3);
+}
+
+.course-number {
+    position: absolute;
+    right: 28px;
+    top: 22px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.course-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: #ffffff;
+    background: rgba(79, 140, 255, 0.12);
+    border: 1px solid rgba(79, 140, 255, 0.3);
+    box-shadow: 0 0 30px rgba(79, 140, 255, 0.08);
+}
+
+.course-info {
+    margin-top: 30px;
+}
+
+.course-status {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #6ea8ff;
+}
+
+.course-info h3 {
+    margin: 10px 0 0;
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.15;
+    color: #ffffff;
+}
+
+.course-btn {
+    width: fit-content;
+    margin-top: 28px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    background: #397df6;
+    transition: 0.3s ease;
+}
+
+.course-btn span {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.course-btn:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 25px rgba(57, 125, 246, 0.3);
+}
+
+.course-btn.disabled {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.35);
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   PÁGINAS DE TRABAJOS
+===================================================== */
+
+.works-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(65, 110, 255, 0.12),
+            transparent 30%
+        ),
+        #070c18;
+}
+
+.back-link {
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    transition: 0.3s ease;
+}
+
+.back-link:hover {
+    color: #ffffff;
+    transform: translateX(-4px);
+}
+
+.works-hero {
+    max-width: 1100px;
+    margin: auto;
+    padding: 130px 30px 70px;
+}
+
+.works-hero span {
+    color: #6ea8ff;
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.works-hero h1 {
+    margin-top: 20px;
+    font-size: clamp(42px, 7vw, 82px);
+    line-height: 0.98;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.works-hero h1 strong {
+    color: #6ea8ff;
+    font-weight: 700;
+}
+
+.works-list {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 30px 100px;
+}
+
+.work-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    align-items: center;
+    gap: 25px;
+    padding: 28px 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s ease;
+}
+
+.work-item:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.work-item:hover {
+    padding-left: 15px;
+    border-color: rgba(110, 168, 255, 0.4);
+}
+
+.work-number {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 2px;
+}
+
+.work-title span {
+    font-size: 10px;
+    color: #6ea8ff;
+    letter-spacing: 2px;
+}
+
+.work-title h2 {
+    margin: 7px 0 0;
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.work-open {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 12px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9px;
+    transition: 0.3s ease;
+}
+
+.work-open:hover {
+    background: #397df6;
+    border-color: #397df6;
+    transform: translateX(5px);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 750px) {
+
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-card {
+        min-height: 280px;
+    }
+
+    .works-hero {
+        padding-top: 100px;
+    }
+
+    .work-item {
+        grid-template-columns: 50px 1fr;
+    }
+
+    .work-open {
+        grid-column: 2;
+        width: fit-content;
+    }
+
+    .work-title h2 {
+        font-size: 20px;
+    }
+
+}
+/* =====================================================
+   INFOGRAFÍAS · ALGORITMOS
+===================================================== */
+.works-intro{max-width:760px;margin-top:22px;color:rgba(255,255,255,.62);font-size:15px}
+.infografias-grid{max-width:1100px;margin:0 auto;padding:0 30px 110px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.infografia-card{background:linear-gradient(145deg,rgba(20,31,58,.96),rgba(8,14,29,.98));border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:22px;box-shadow:0 18px 50px rgba(0,0,0,.22);overflow:hidden;transition:.3s ease}
+.infografia-card:hover{transform:translateY(-6px);border-color:rgba(110,168,255,.42);box-shadow:0 24px 60px rgba(0,0,0,.32)}
+.infografia-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;color:#6ea8ff;font-size:10px;letter-spacing:2px}.infografia-meta span{font:700 22px "Space Grotesk";color:rgba(255,255,255,.28)}
+.infografia-card h2{font:600 25px/1.15 "Space Grotesk";color:#fff;margin:6px 0 9px}.infografia-card p{color:#aaa7c4;font-size:13px;min-height:42px}
+.infografia-card>img{display:block;width:100%;height:auto;max-height:580px;object-fit:contain;margin-top:18px;border-radius:14px;background:#fff;cursor:zoom-in}
+.infografia-open{margin-top:15px;border:1px solid rgba(110,168,255,.35);background:rgba(57,125,246,.12);color:#fff;border-radius:10px;padding:10px 14px;font:700 10px "DM Sans";letter-spacing:1.4px;cursor:pointer;transition:.25s}.infografia-open span{margin-left:8px;font-size:14px}.infografia-open:hover{background:#397df6;border-color:#397df6;transform:translateX(3px)}
+.infografia-modal{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;padding:35px;background:rgba(3,5,13,.92);backdrop-filter:blur(10px)}.infografia-modal.open{display:flex}.modal-content{width:min(1000px,94vw);max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:12px}.modal-content span{color:#fff;font:600 15px "Space Grotesk";text-align:center}.modal-content img{max-width:100%;max-height:82vh;width:auto;height:auto;object-fit:contain;border-radius:10px;box-shadow:0 25px 80px rgba(0,0,0,.5);background:#fff}.modal-close{position:absolute;right:28px;top:18px;width:45px;height:45px;border:1px solid rgba(255,255,255,.2);border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:30px;line-height:1;cursor:pointer}.modal-close:hover{background:#397df6}
+@media(max-width:750px){.infografias-grid{grid-template-columns:1fr;padding-left:6%;padding-right:6%}.infografia-card h2{font-size:22px}.works-intro{font-size:14px}.infografia-modal{padding:20px}.modal-close{right:15px;top:12px}}
