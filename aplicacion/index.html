@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geometría Plana — UPLA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Logo_upla_vertical.jpg/250px-Logo_upla_vertical.jpg" alt="UPLA"></div>
+      <div class="brand-text"><b>UPLA</b><span>Universidad Peruana Los Andes</span></div>
+    </div>
+    <nav class="topnav">
+      <a class="active" href="#inicio">Inicio</a><a href="#actividades">Actividades</a><a href="#info">Servicios</a><a href="#contacto">Contacto</a>
+    </nav>
+    <div class="search-wrap">
+      <input id="search" placeholder="Buscar…" autocomplete="off">
+      <div id="searchResults" class="search-results"></div>
+    </div>
+    <div class="student"><span>ES</span><b>Est. Silva</b></div>
+  </div>
+  <div class="mobile-nav"><a href="#inicio">Inicio</a><a href="#actividades">Actividades</a><a href="#info">Servicios</a><a href="#contacto">Contacto</a></div>
+</header>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="side-title">Geometría Plana</div>
+  <div id="shapeMenu"></div>
+  <div class="semester"><small>SEMESTRE</small><b>2026 — 2</b><span>Ing. de Sistemas</span></div>
+</aside>
+
+<main>
+<section id="inicio" class="hero">
+  <div class="crumb">UPLA　›　Actividades　›　Geometría Plana</div>
+</section>
+
+<section id="actividades" class="content">
+  <div class="card">
+    <div class="tag purple">●　ACTIVIDAD 01</div>
+    <h1>Área y Perímetro — <em id="shapeTitle">Rectángulo</em></h1>
+    <p class="muted">Selecciona una figura y el sistema de medida</p>
+
+    <label>Figura geométrica</label>
+    <div id="shapeButtons" class="shape-buttons"></div>
+
+    <div id="diagram" class="diagram"></div>
+
+    <label>Sistema de medida</label>
+    <div id="unitButtons" class="unit-buttons"></div>
+
+    <form id="geometryForm">
+      <div id="fields" class="fields"></div>
+      <div class="actions"><button class="btn calc" type="submit">⚡ Calcular</button><button class="btn clear" type="button" id="clearGeo">Limpiar</button></div>
+    </form>
+  </div>
+
+  <div class="card pink-card">
+    <div class="tag pink">●　TEOREMA DE PITÁGORAS</div>
+    <h2><em>c² = a² + b²</em></h2>
+    <p class="muted">Halla la hipotenusa o un cateto desconocido</p>
+    <div class="pyth-modes">
+      <button id="modeHyp" class="pyth active">📐 <b>Hallar hipotenusa</b><small>Conoces los 2 catetos</small></button>
+      <button id="modeLeg" class="pyth">🔍 <b>Hallar cateto</b><small>Conoces hipotenusa y un cateto</small></button>
+    </div>
+    <div class="pyth-diagram">△<span>c</span></div>
+    <label>Sistema de medida</label>
+    <div id="pythUnits" class="unit-buttons"></div>
+    <form id="pythForm">
+      <div id="pythFields" class="fields"></div>
+      <div class="actions"><button class="btn calc pink-gradient" type="submit">⚡ Calcular</button><button class="btn clear" type="button" id="clearPyth">Limpiar</button></div>
+    </form>
+  </div>
+
+  <div id="info" class="tips">
+    <div><span>💡</span><b>¿Sabías que?</b><p>Un cuadrado es un rectángulo especial donde todos sus lados son iguales.</p></div>
+    <div><span>📘</span><b>Unidades</b><p>El área se expresa en unidades cuadradas (u²) y el perímetro en unidades lineales (u).</p></div>
+  </div>
+</section>
+</main>
+</div>
+
+<footer id="contacto">
+  <div><b>Universidad Peruana Los Andes</b><span>Facultad de Ingeniería — Ingeniería de Sistemas</span></div>
+  <div>© 2026 UPLA — Todos los derechos reservados</div>
+</footer>
+
+<div id="modal" class="modal"><div class="modal-box"><button id="closeModal" class="close">×</button><h3 id="modalTitle">Resultados</h3><div id="modalBody"></div></div></div>
+<script src="app.js"></script>
+</body>
+</html>
