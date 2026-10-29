@@ -1,62 +1,611 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Algoritmos | Portafolio Académico</title>
+
 <style>
-:root{--bg:#07111f;--panel:#101d31;--panel2:#15253d;--text:#eef4ff;--muted:#9eb0c9;--accent:#7c6cff;--accent2:#b56cff;--line:rgba(255,255,255,.12)}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at top,#182a48 0,#07111f 48%,#050b14 100%);color:var(--text);line-height:1.55}
-a{color:inherit;text-decoration:none}.wrap{width:min(1150px,92%);margin:auto}.top{padding:26px 0;display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{font-weight:800;letter-spacing:.04em}.brand span{color:#a99cff}.back{border:1px solid var(--line);padding:10px 15px;border-radius:12px;background:#ffffff09}
-.hero{padding:36px 0 30px}.eyebrow{color:#b8adff;font-size:.8rem;font-weight:800;letter-spacing:.16em}.hero h1{font-size:clamp(2.4rem,7vw,4.8rem);line-height:1.03;margin:12px 0}.hero p{color:var(--muted);max-width:720px}
-.weeks{display:grid;gap:14px;padding-bottom:60px}.week{background:linear-gradient(145deg,rgba(21,37,61,.96),rgba(9,20,35,.96));border:1px solid var(--line);border-radius:20px;overflow:hidden}.week summary{list-style:none;cursor:pointer;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}.week summary::-webkit-details-marker{display:none}.week summary:hover{background:#ffffff06}.week-title{display:flex;gap:16px;align-items:center}.number{display:grid;place-items:center;width:48px;height:48px;flex:0 0 48px;border-radius:14px;background:#7c6cff24;color:#cfc8ff;font-weight:900}.week h2{font-size:1.15rem;margin:0}.week p{color:var(--muted);margin:4px 0 0;font-size:.92rem}.pill{white-space:nowrap;border:1px solid #7c6cff66;background:#7c6cff20;color:#d4ceff;border-radius:999px;padding:6px 10px;font-size:.78rem;font-weight:800}.inside{padding:4px 24px 24px;border-top:1px solid var(--line)}.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{display:inline-block;padding:10px 14px;border:1px solid var(--line);background:#ffffff08;border-radius:10px;font-weight:650}.btn:hover{border-color:var(--accent2);background:#7c6cff18}.notice{color:var(--muted);font-size:.9rem;margin-top:14px}.groups{display:grid;gap:12px;margin-top:16px}.group{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#ffffff03}.group summary{padding:15px 16px;font-weight:750}.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;padding:0 15px 16px}.card{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:#ffffff05}.card img{width:100%;height:auto;display:block}.cap{padding:10px 12px;color:#cbd7ea;font-size:.88rem}.cap a{color:#cfc8ff;text-decoration:underline}.empty{padding:20px;border:1px dashed var(--line);border-radius:12px;color:var(--muted);margin-top:15px}
-footer{border-top:1px solid var(--line);padding:24px 0 35px;color:var(--muted);font-size:.9rem}
-@media(max-width:600px){.top,.week summary{align-items:flex-start}.top{flex-direction:column}.week summary{padding:17px}.pill{font-size:.7rem}.inside{padding:4px 16px 18px}.week-title{gap:11px}.number{width:42px;height:42px;flex-basis:42px}}
+:root {
+  --bg: #07111f;
+  --panel: #101d31;
+  --text: #eef4ff;
+  --muted: #9eb0c9;
+  --accent: #7c6cff;
+  --line: rgba(255,255,255,.12);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: radial-gradient(circle at top, #182a48, #07111f 60%);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  width: min(1150px, 92%);
+  margin: auto;
+}
+
+.top {
+  padding: 25px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.brand { font-weight: 800; }
+.brand span { color: #a99cff; }
+
+.back, .btn {
+  display: inline-block;
+  padding: 10px 15px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #ffffff09;
+}
+
+.hero { padding: 35px 0; }
+
+.eyebrow {
+  color: #b8adff;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 4.8rem);
+  margin: 12px 0;
+  line-height: 1.1;
+}
+
+.hero p, .week p, .status, .notice {
+  color: var(--muted);
+}
+
+.weeks {
+  display: grid;
+  gap: 15px;
+  padding-bottom: 60px;
+}
+
+.week {
+  background: linear-gradient(145deg, #15253d, #091423);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.week > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.week > summary::-webkit-details-marker,
+.group > summary::-webkit-details-marker {
+  display: none;
+}
+
+.week > summary:hover,
+.group > summary:hover {
+  background: #ffffff08;
+}
+
+.week-title {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.number {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: #7c6cff24;
+  color: #cfc8ff;
+  font-weight: 900;
+}
+
+.week h2 { font-size: 1.15rem; margin: 0; }
+.week p { margin: 4px 0 0; }
+
+.pill {
+  border: 1px solid #7c6cff66;
+  background: #7c6cff20;
+  color: #d4ceff;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: .8rem;
+  white-space: nowrap;
+}
+
+.inside {
+  padding: 18px 24px 24px;
+  border-top: 1px solid var(--line);
+}
+
+.groups {
+  display: grid;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.group {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff03;
+}
+
+.group > summary {
+  padding: 17px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.group[open] > summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  padding: 15px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  overflow: hidden;
+  background: #ffffff05;
+  min-width: 0;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  max-height: 650px;
+  object-fit: contain;
+  display: block;
+  background: #fff;
+  cursor: zoom-in;
+}
+
+.cap {
+  padding: 10px 12px;
+  color: #cbd7ea;
+  font-size: .9rem;
+  overflow-wrap: anywhere;
+}
+
+.btn:hover {
+  border-color: #b56cff;
+  background: #7c6cff18;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.empty {
+  padding: 18px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+.status { padding: 12px 0; }
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 25px 0;
+  color: var(--muted);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: #02050bee;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 999;
+}
+
+.lightbox.open { display: flex; }
+
+.lightbox img {
+  max-width: 96vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 2rem;
+  background: #182a48;
+  border: 1px solid #ffffff40;
+  color: white;
+  border-radius: 10px;
+  padding: 2px 14px;
+  cursor: pointer;
+}
+
+@media(max-width: 600px) {
+  .top { flex-direction: column; align-items: flex-start; }
+  .week > summary { padding: 16px; }
+  .inside { padding: 15px; }
+  .week-title { gap: 10px; }
+  .number { width: 42px; height: 42px; }
+  .pill { font-size: .7rem; }
+  .gallery { grid-template-columns: 1fr; }
+}
 </style>
 </head>
-<body><div class="wrap">
-<header class="top"><div class="brand">JV · <span>ALGORITMOS Y ESTRUCTURAS DE DATOS</span></div><a class="back" href="portafolio.html">← Volver al portafolio</a></header>
-<section class="hero"><div class="eyebrow">PORTAFOLIO ACADÉMICO · UPLA</div><h1>Algoritmos</h1><p>Selecciona una semana para revisar sus enunciados y materiales. Los trabajos no se muestran hasta que abras la semana correspondiente.</p></section>
-<main class="weeks">
-<details class="week"><summary><div class="week-title"><span class="number">01</span><div><h2>Semana 1</h2><p>Métodos, arreglos y matrices en Java.</p></div></div><span class="pill">Abrir semana ↗</span></summary><div class="inside"><p>Material disponible en la carpeta de la semana.</p><div class="links"><a class="btn" href="semana1/" target="_blank" rel="noopener">Ver carpeta Semana 1</a><a class="btn" href="https://github.com/jheyssun-stack/Mi-Portafolio/tree/main/semana1" target="_blank" rel="noopener">Abrir archivos en GitHub</a></div></div></details>
-<details class="week"><summary><div class="week-title"><span class="number">02</span><div><h2>Semana 2</h2><p>Espacio reservado para agregar los trabajos.</p></div></div><span class="pill">Pendiente</span></summary><div class="inside"><div class="empty">Todavía no se han agregado trabajos a esta semana.</div></div></details>
-<details class="week"><summary><div class="week-title"><span class="number">03</span><div><h2>Semana 3</h2><p>Enunciados y ejercicios de programación en Java.</p></div></div><span class="pill">Abrir semana ↗</span></summary><div class="inside"><p>Revisa los materiales que ya están guardados en el repositorio.</p><div class="links"><a class="btn" href="https://github.com/jheyssun-stack/Mi-Portafolio/tree/main/semana3" target="_blank" rel="noopener">Ver trabajos de Semana 3</a></div></div></details>
-<details class="week"><summary><div class="week-title"><span class="number">04</span><div><h2>Semana 4</h2><p>Material gráfico y ejercicios de la semana.</p></div></div><span class="pill">Abrir semana ↗</span></summary><div class="inside"><p>Revisa los materiales que ya están guardados en el repositorio.</p><div class="links"><a class="btn" href="https://github.com/jheyssun-stack/Mi-Portafolio/tree/main/semana4" target="_blank" rel="noopener">Ver trabajos de Semana 4</a></div></div></details>
-<details class="week"><summary><div class="week-title"><span class="number">05</span><div><h2>Semana 5</h2><p>Listas enlazadas en Java.</p></div></div><span class="pill">4 temas · muestra</span></summary><div class="inside"><p>Abre un enunciado para ver la infografía de práctica.</p><div class="gallery"><article class="card"><a href="semana5/semana5-material-de-muestra.png" target="_blank"><img src="semana5/semana5-material-de-muestra.png" alt="Infografía Semana 5"></a><div class="cap">Material ilustrativo de listas enlazadas. <a href="semana5.zip" download>Descargar ZIP</a></div></article></div><p class="notice">Los materiales de las semanas 5, 7 y 8 son ejemplos de muestra creados para completar la estructura; reemplázalos por los trabajos reales antes de presentarlos.</p></div></details>
-<details class="week"><summary><div class="week-title"><span class="number">06</span><div><h2>Semana 6</h2><p>Pilas, inventario y control de historial.</p></div></div><span class="pill">3 enunciados</span></summary><div class="inside"><p>Selecciona cada enunciado para desplegar sus imágenes.</p><div class="groups" id="semana6-groups"></div><div class="links"><a class="btn" href="semana6.zip" download>Descargar todos los trabajos de Semana 6 (.zip)</a></div></div></details>
-<details class="week"><summary><div class="week-title"><span class="number">07</span><div><h2>Semana 7</h2><p>Colas y procesamiento de datos.</p></div></div><span class="pill">4 temas · muestra</span></summary><div class="inside"><div class="gallery"><article class="card"><a href="semana7/semana7-material-de-muestra.png" target="_blank"><img src="semana7/semana7-material-de-muestra.png" alt="Infografía Semana 7"></a><div class="cap">Material ilustrativo de colas. <a href="semana7.zip" download>Descargar ZIP</a></div></article></div></div></details>
-<details class="week"><summary><div class="week-title"><span class="number">08</span><div><h2>Semana 8</h2><p>Árboles y recorridos.</p></div></div><span class="pill">4 temas · muestra</span></summary><div class="inside"><div class="gallery"><article class="card"><a href="semana8/semana8-material-de-muestra.png" target="_blank"><img src="semana8/semana8-material-de-muestra.png" alt="Infografía Semana 8"></a><div class="cap">Material ilustrativo de árboles. <a href="semana8.zip" download>Descargar ZIP</a></div></article></div></div></details>
-</main><footer>Portafolio Académico · Ingeniería de Sistemas y Computación · UPLA</footer></div>
+
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="brand">
+    JV · <span>ALGORITMOS Y ESTRUCTURAS DE DATOS</span>
+  </div>
+  <a class="back" href="../index.html">← Volver al portafolio</a>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">PORTAFOLIO ACADÉMICO · UPLA</div>
+  <h1>Algoritmos</h1>
+  <p>
+    Selecciona una semana para ver tus trabajos.
+    Abre cada enunciado para visualizar sus imágenes
+    sin salir del portafolio.
+  </p>
+</section>
+
+<main class="weeks" id="weeks"></main>
+
+<footer>
+  Portafolio Académico · Ingeniería de Sistemas y Computación · UPLA
+</footer>
+
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="close" id="closeLightbox" aria-label="Cerrar">×</button>
+  <img id="lightboxImg" alt="Imagen ampliada">
+</div>
+
 <script>
-const trabajos6 = [
- {carpeta:"enunciado6.1",titulo:"Enunciado 1 · Gestión de alumnos con pilas"},
- {carpeta:"enunciado6.2",titulo:"Enunciado 2 · Inventario de computadoras"},
- {carpeta:"enunciado6.3",titulo:"Enunciado 3 · Historial y control de versiones"}
+const OWNER = "jheyssun-stack";
+const REPO = "Mi-Portafolio";
+const BRANCH = "main";
+
+const weeks = [
+  {n:1, desc:"Ejercicios y trabajos de la Semana 1."},
+  {n:2, desc:"Ejercicios y trabajos de la Semana 2."},
+  {n:3, desc:"Ejercicios de programación en Java."},
+  {n:4, desc:"Actividades y ejercicios de programación."},
+  {n:5, desc:"Listas enlazadas en Java."},
+  {n:6, desc:"Pilas, inventario y control de historial."},
+  {n:7, desc:"Colas y procesamiento de datos."},
+  {n:8, desc:"Árboles y recorridos."}
 ];
-const root="semana6/";
-const groups=document.getElementById("semana6-groups");
-trabajos6.forEach((item,index)=>{
- const det=document.createElement("details");det.className="group";
- const sum=document.createElement("summary");sum.textContent=item.titulo;det.appendChild(sum);
- const gallery=document.createElement("div");gallery.className="gallery";
- const captions={
- "enunciado6.1":["Infografía del Método 8_ Estado de la Pila.png","Infografía del método insertarPila en Java.png","Infografía del método mayor promedio en pila.png","Infografía del Método POP en Pilas (1).png","Infografía del método POP en pilas.png","Infografía Java_ Método eliminarPila() (POP).png","Infografía Método buscarAlumno() en Java.png","Infografía sobre modificar datos en una pila Java.png","Infografía_ Método mostrarPila()中央値との差.png"],
- "enunciado6.2":["Búsqueda por serie","Mostrar inventario","Método peek","Valor total del inventario","Insertar al inicio","Equipos superiores","Desapilar computadora","Vaciar pila","Contar computadoras"],
- "enunciado6.3":["Historial de acciones","Deshacer acción","Obtener historial","Mostrar estado del historial","Rehacer acción","Control de versiones con dos pilas","Búsqueda en el historial"]
- };
- // Lista explícita para que las rutas funcionen también en GitHub Pages.
- const files={
- "enunciado6.1":["Infografía del Método 8_ Estado de la Pila.png","Infografía del método insertarPila en Java.png","Infografía del método mayor promedio en pila.png","Infografía del Método POP en Pilas (1).png","Infografía del método POP en pilas.png","Infografía Java_ Método eliminarPila() (POP).png","Infografía Método buscarAlumno() en Java.png","Infografía sobre modificar datos en una pila Java.png","Infografía_ Método mostrarPila()中央値との差.png"],
- "enunciado6.2":["Infografía del método de búsqueda por serie.png","Infografía del método mostrarInventario en Java.png","Infografía del método peek en una pila.png","Infografía del valor total del inventario.png","Infografía insertarInicio_ lista enlazada en Java.png","Infografía Método 9_ Equipos superiores (1).png","Infografía Método 9_ Equipos superiores.png","Infografía POP_ Desapilar computadora.png","Infografía sobre vaciar una pila de inventario.png","Infografía_ Contar computadoras en una pila.png"],
- "enunciado6.3":["Infografía del historial de acciones en Java.png","Infografía del método deshacerAccion().png","Infografía del método obtenerHistorial().png","Infografía Java_ Mostrar Estado del Historial.png","Infografía Java_ Método rehacerAccion().png","Infografía_ Sistema de Control de Versiones con Dos Pilas.png","Método 5_ Búsqueda en el historial.png"]
- };
- files[item.carpeta].forEach((file,i)=>{
-   const card=document.createElement("article");card.className="card";
-   const a=document.createElement("a");a.target="_blank";a.rel="noopener";a.href=root+item.carpeta+"/"+encodeURIComponent(file);
-   const img=document.createElement("img");img.loading="lazy";img.src=root+item.carpeta+"/"+encodeURIComponent(file);img.alt=captions[item.carpeta][i]||file;
-   img.onerror=()=>{card.style.display="none";};
-   a.appendChild(img);card.appendChild(a);
-   const cap=document.createElement("div");cap.className="cap";cap.textContent=String(i+1).padStart(2,"0")+" · "+(captions[item.carpeta][i]||file);card.appendChild(cap);gallery.appendChild(card);
- });
- det.appendChild(gallery);groups.appendChild(det);
+
+const titles6 = {
+  "enunciado6.1": "Enunciado 1 · Gestión de alumnos con pilas",
+  "enunciado6.2": "Enunciado 2 · Inventario de computadoras",
+  "enunciado6.3": "Enunciado 3 · Historial y control de versiones"
+};
+
+const imageExtensions = /\.(png|jpe?g|webp|gif|bmp)$/i;
+const weeksEl = document.getElementById("weeks");
+
+function make(tag, cls, content) {
+  const el = document.createElement(tag);
+  if (cls) el.className = cls;
+  if (content !== undefined) el.textContent = content;
+  return el;
+}
+
+function rawUrl(path) {
+  return `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/` +
+    path.split("/").map(encodeURIComponent).join("/");
+}
+
+async function getContents(path) {
+  const url =
+    `https://api.github.com/repos/${OWNER}/${REPO}/contents/` +
+    path.split("/").map(encodeURIComponent).join("/") +
+    `?ref=${BRANCH}`;
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error("No se pudo acceder a " + path);
+  }
+
+  return response.json();
+}
+
+async function findWeekFiles(n) {
+  const candidates = [
+    `trabajos/semana${n}`,
+    `trabajos/Semana${n}`,
+    `trabajos/semana${String(n).padStart(2, "0")}`,
+    `semana${n}`,
+    `Semana${n}`
+  ];
+
+  for (const folder of candidates) {
+    try {
+      const items = await getContents(folder);
+      if (Array.isArray(items)) return {folder, items};
+    } catch (error) {
+      // Probar la siguiente ruta.
+    }
+  }
+
+  return null;
+}
+
+function addImageCard(gallery, file, folder) {
+  const card = make("article", "card");
+  const img = document.createElement("img");
+  const src = rawUrl(folder + "/" + file.name);
+
+  img.src = src;
+  img.alt = file.name;
+  img.loading = "lazy";
+
+  img.addEventListener("click", () => {
+    document.getElementById("lightboxImg").src = src;
+    document.getElementById("lightbox").classList.add("open");
+  });
+
+  img.onerror = () => card.remove();
+
+  card.appendChild(img);
+  card.appendChild(make("div", "cap", file.name));
+  gallery.appendChild(card);
+}
+
+function createWeek(w) {
+  const section = make("details", "week");
+  const summary = document.createElement("summary");
+  const left = make("div", "week-title");
+
+  left.appendChild(
+    make("span", "number", String(w.n).padStart(2, "0"))
+  );
+
+  const info = document.createElement("div");
+  info.appendChild(make("h2", "", "Semana " + w.n));
+  info.appendChild(make("p", "", w.desc));
+  left.appendChild(info);
+
+  summary.appendChild(left);
+  summary.appendChild(make("span", "pill", "Abrir semana ↓"));
+
+  section.appendChild(summary);
+
+  const inside = make("div", "inside");
+  inside.appendChild(make("p", "status", "Abre para cargar los trabajos."));
+  section.appendChild(inside);
+
+  section.addEventListener("toggle", () => {
+    if (section.open && !section.dataset.loaded) {
+      section.dataset.loaded = "true";
+      loadWeek(w, inside);
+    }
+  });
+
+  weeksEl.appendChild(section);
+}
+
+async function loadWeek(w, inside) {
+  inside.replaceChildren();
+  inside.appendChild(make("p", "status", "Cargando trabajos..."));
+
+  const result = await findWeekFiles(w.n);
+  inside.replaceChildren();
+
+  if (!result) {
+    inside.appendChild(make(
+      "div",
+      "empty",
+      `No se encontró la carpeta de la Semana ${w.n}. ` +
+      `Verifica que sus imágenes estén subidas a ` +
+      `trabajos/semana${w.n}/ en GitHub.`
+    ));
+    return;
+  }
+
+  const {folder, items} = result;
+  const images = items.filter(
+    f => f.type === "file" && imageExtensions.test(f.name)
+  );
+
+  const subfolders = items.filter(f => f.type === "dir");
+
+  if (w.n === 6) {
+    if (subfolders.length) {
+      const groups = make("div", "groups");
+
+      subfolders.forEach(sub => {
+        const group = make("details", "group");
+        const title = titles6[sub.name] || sub.name.replace(/[-_]/g, " ");
+
+        group.appendChild(make("summary", "", title));
+
+        const gallery = make("div", "gallery");
+        group.appendChild(gallery);
+
+        group.addEventListener("toggle", async () => {
+          if (!group.open || group.dataset.loaded) return;
+
+          group.dataset.loaded = "true";
+          gallery.replaceChildren();
+          gallery.appendChild(make("p", "status", "Cargando imágenes..."));
+
+          try {
+            const files = await getContents(folder + "/" + sub.name);
+            gallery.replaceChildren();
+
+            const imgs = files.filter(
+              f => f.type === "file" && imageExtensions.test(f.name)
+            );
+
+            if (!imgs.length) {
+              gallery.appendChild(make(
+                "div", "empty",
+                "No hay imágenes en este enunciado."
+              ));
+              return;
+            }
+
+            imgs.forEach(file =>
+              addImageCard(gallery, file, folder + "/" + sub.name)
+            );
+          } catch (error) {
+            gallery.replaceChildren();
+            gallery.appendChild(make(
+              "div", "empty",
+              "No se pudieron cargar las imágenes. Comprueba la carpeta."
+            ));
+          }
+        });
+
+        groups.appendChild(group);
+      });
+
+      inside.appendChild(make(
+        "p", "notice",
+        "Selecciona cada enunciado para desplegar sus imágenes."
+      ));
+
+      inside.appendChild(groups);
+    }
+
+    if (images.length) {
+      const gallery = make("div", "gallery");
+      images.forEach(file => addImageCard(gallery, file, folder));
+      inside.appendChild(gallery);
+    }
+
+    if (!images.length && !subfolders.length) {
+      inside.appendChild(make(
+        "div", "empty",
+        "No hay imágenes ni carpetas de enunciados en esta semana."
+      ));
+    }
+
+    const zip = make("a", "btn", "Descargar ZIP de Semana 6");
+    zip.href = rawUrl("semana6.zip");
+    zip.target = "_blank";
+    zip.rel = "noopener";
+
+    const links = make("div", "links");
+    links.appendChild(zip);
+    inside.appendChild(links);
+
+    return;
+  }
+
+  if (images.length) {
+    const gallery = make("div", "gallery");
+    images.forEach(file => addImageCard(gallery, file, folder));
+    inside.appendChild(gallery);
+  }
+
+  for (const sub of subfolders) {
+    const group = make("details", "group");
+    group.appendChild(make(
+      "summary", "",
+      sub.name.replace(/[-_]/g, " ")
+    ));
+
+    const gallery = make("div", "gallery");
+    group.appendChild(gallery);
+    inside.appendChild(group);
+
+    group.addEventListener("toggle", async () => {
+      if (!group.open || group.dataset.loaded) return;
+      group.dataset.loaded = "true";
+
+      try {
+        const files = await getContents(folder + "/" + sub.name);
+        const imgs = files.filter(
+          f => f.type === "file" && imageExtensions.test(f.name)
+        );
+
+        if (!imgs.length) {
+          gallery.appendChild(make(
+            "div", "empty", "No hay imágenes en esta sección."
+          ));
+          return;
+        }
+
+        imgs.forEach(file =>
+          addImageCard(gallery, file, folder + "/" + sub.name)
+        );
+      } catch (error) {
+        gallery.appendChild(make(
+          "div", "empty", "No se pudieron cargar las imágenes."
+        ));
+      }
+    });
+  }
+
+  if (!images.length && !subfolders.length) {
+    inside.appendChild(make(
+      "div", "empty",
+      "Esta carpeta no contiene imágenes compatibles."
+    ));
+  }
+}
+
+weeks.forEach(createWeek);
+
+const lightbox = document.getElementById("lightbox");
+
+document.getElementById("closeLightbox").onclick = () => {
+  lightbox.classList.remove("open");
+};
+
+lightbox.addEventListener("click", event => {
+  if (event.target === lightbox) {
+    lightbox.classList.remove("open");
+  }
 });
-</script></body></html>
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    lightbox.classList.remove("open");
+  }
+});
+</script>
+</body>
+</html>
