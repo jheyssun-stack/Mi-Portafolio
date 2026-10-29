@@ -356,21 +356,80 @@ async function findWeekFiles(n) {
     `trabajos/Semana${n}`,
     `trabajos/semana${String(n).padStart(2, "0")}`,
     `semana${n}`,
-    `Semana${n}`
+    `Semana${n}`,
+    `SEMANA${n}`,
+    `trabajos/SEMANA${n}`
   ];
 
+  const imageExtensions = /\.(png|jpe?g|webp|gif|bmp)$/i;
+
+  // Buscar carpetas normales de la semana.
   for (const folder of candidates) {
     try {
       const items = await getContents(folder);
-      if (Array.isArray(items)) return {folder, items};
+
+      if (Array.isArray(items)) {
+        const files = items.filter(item =>
+          item.type === "file" &&
+          imageExtensions.test(item.name)
+        );
+
+        const subfolders = items.filter(item =>
+          item.type === "dir"
+        );
+
+        if (files.length || subfolders.length) {
+          return {
+            folder,
+            items,
+            files,
+            subfolders
+          };
+        }
+      }
     } catch (error) {
-      // Probar la siguiente ruta.
+      // La carpeta no existe; continuar buscando.
+    }
+  }
+
+  // Buscar los enunciados de la Semana 6 en la raíz
+  // o dentro de la carpeta trabajos.
+  if (n === 6) {
+    const possibleFolders = [
+      "",
+      "trabajos"
+    ];
+
+    for (const base of possibleFolders) {
+      try {
+        const items = await getContents(base);
+
+        if (Array.isArray(items)) {
+          const subfolders = items.filter(item =>
+            item.type === "dir" &&
+            /^enunciado6[._-]?[123]$/i.test(item.name)
+          );
+
+          if (subfolders.length) {
+            return {
+              folder: base,
+              items,
+              files: items.filter(item =>
+                item.type === "file" &&
+                imageExtensions.test(item.name)
+              ),
+              subfolders
+            };
+          }
+        }
+      } catch (error) {
+        // Continuar con la siguiente ubicación.
+      }
     }
   }
 
   return null;
 }
-
 function addImageCard(gallery, file, folder) {
   const card = make("article", "card");
   const img = document.createElement("img");
