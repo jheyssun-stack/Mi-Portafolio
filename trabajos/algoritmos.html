@@ -323,6 +323,7 @@ const titles6 = {
 const imageExtensions = /\.(png|jpe?g|webp|gif|bmp)$/i;
 const weeksEl = document.getElementById("weeks");
 
+
 function make(tag, cls, content) {
   const el = document.createElement(tag);
   if (cls) el.className = cls;
@@ -330,7 +331,6 @@ function make(tag, cls, content) {
   return el;
 }
 
-f
 function rawUrl(path) {
   const cleanPath = path
     .split("/")
@@ -340,6 +340,7 @@ function rawUrl(path) {
 
   return `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${cleanPath}`;
 }
+
 
 async function getContents(path) {
   const cleanPath = path
