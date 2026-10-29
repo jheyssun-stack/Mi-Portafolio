@@ -330,21 +330,32 @@ function make(tag, cls, content) {
   return el;
 }
 
+f
 function rawUrl(path) {
-  return `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/` +
-    path.split("/").map(encodeURIComponent).join("/");
+  const cleanPath = path
+    .split("/")
+    .filter(Boolean)
+    .map(encodeURIComponent)
+    .join("/");
+
+  return `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${cleanPath}`;
 }
 
 async function getContents(path) {
+  const cleanPath = path
+    .split("/")
+    .filter(Boolean)
+    .map(encodeURIComponent)
+    .join("/");
+
   const url =
     `https://api.github.com/repos/${OWNER}/${REPO}/contents/` +
-    path.split("/").map(encodeURIComponent).join("/") +
-    `?ref=${BRANCH}`;
+    `${cleanPath}?ref=${BRANCH}`;
 
   const response = await fetch(url);
 
   if (!response.ok) {
-    throw new Error("No se pudo acceder a " + path);
+    throw new Error("No se pudo acceder a " + cleanPath);
   }
 
   return response.json();
