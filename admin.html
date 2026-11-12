@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Administrar portafolio · Jheyvx</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="js/cloud-config.js"></script>
+</head>
+<body>
+  <main class="admin-shell">
+    <a class="back" href="index.html">← Volver al portafolio</a>
+    <header><span class="eyebrow">PANEL PRIVADO</span><h1>Administrar <b>Jheyvx</b></h1><p>Inicia sesión para subir evidencias a Algoritmos o a tus talleres de aplicaciones.</p></header>
+    <section id="loginPanel" class="panel">
+      <h2>Iniciar sesión</h2>
+      <form id="loginForm"><label>Correo<input name="email" type="email" autocomplete="username" required></label><label>Contraseña<input name="password" type="password" autocomplete="current-password" required></label><button>Entrar</button></form>
+    </section>
+    <section id="uploadPanel" class="panel" hidden>
+      <div class="panel-top"><h2>Subir un trabajo</h2><button class="quiet" id="signOut">Cerrar sesión</button></div>
+      <form id="uploadForm">
+        <label>Área<select name="course"><option value="algoritmos">Algoritmos y Estructuras de Datos</option><option value="apps">Desarrollo de Aplicaciones</option></select></label>
+        <label>Semana<select name="algorithmSection" id="algorithmSection"></select></label>
+        <label>Taller<select name="appSection" id="appSection"><option value="taller-1">Taller 1 · material actual</option><option value="taller-2">Taller 2</option></select></label>
+        <label>Título<input name="title" maxlength="100" required placeholder="Nombre del trabajo"></label>
+        <label>Descripción<textarea name="description" maxlength="400" placeholder="Opcional"></textarea></label>
+        <label>Archivo (imagen, PDF, Word, ZIP…) <input name="file" type="file" required accept="image/jpeg,image/png,image/webp,image/gif,image/avif,.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.zip,.txt,.csv,.sql"></label>
+        <p class="hint">Máximo 50 MB por archivo. El archivo se guardará en el almacenamiento de Supabase y será visible para quienes visiten el portafolio.</p>
+        <button type="submit">Subir y publicar</button><span id="status" role="status"></span>
+      </form>
+      <h2 class="list-title">Archivos publicados</h2><div id="itemsList"></div>
+    </section>
+    <p class="setup-note" id="setupNote">El panel necesita la configuración de Supabase para habilitarse.</p>
+  </main>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

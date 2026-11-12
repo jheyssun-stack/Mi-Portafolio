@@ -1,0 +1,59 @@
+MI PORTAFOLIO EN LA NUBE — JHEYVX
+================================
+
+Este paquete añade:
+- Un panel privado en admin.html para subir imágenes, PDF, Word, ZIP y otros archivos hasta 50 MB.
+- Guardado permanente en Supabase Storage y fichas de trabajos en Supabase Database.
+- 16 semanas de Algoritmos y dos secciones para Desarrollo de Aplicaciones: Taller 1 conserva el material actual y Taller 2 queda listo para subir.
+- El asistente Jheyvx con una mascota SVG animada, respuestas mediante OpenAI y búsqueda web con enlaces de fuentes.
+- Un fondo animado en la portada, preparado para cambiarlo por una imagen después.
+
+ANTES DE EMPEZAR
+Necesitas una cuenta gratuita de Supabase y una cuenta de API de OpenAI. La API de OpenAI se cobra según uso y es independiente de una suscripción de ChatGPT. No pegues aquí ni publiques tu contraseña, OPENAI_API_KEY o una clave Supabase secreta/service_role. La publishable key sí está diseñada para el navegador, con las políticas RLS de este paquete.
+
+A. PUBLICAR ESTOS ARCHIVOS EN GITHUB
+1. Descarga e instala GitHub Desktop: https://desktop.github.com/
+2. En GitHub Desktop elige File > Clone repository > URL y pega:
+   https://github.com/jheyssun-stack/Mi-Portafolio
+3. Abre la carpeta local del repositorio desde GitHub Desktop.
+4. Descomprime este paquete. Copia dentro de la carpeta local del repo todos los archivos y carpetas del ZIP, conservando sus rutas. Acepta reemplazar los archivos cuando Windows pregunte.
+5. En GitHub Desktop escribe un resumen (por ejemplo, "Añadir panel y asistente Jheyvx"), pulsa Commit to main y luego Push origin.
+6. Espera a que GitHub Pages actualice el sitio. El enlace del panel será el mismo dominio de tu sitio seguido de /admin.html.
+
+B. CREAR BASE DE DATOS Y ALMACENAMIENTO
+1. Entra a https://database.new y crea un proyecto Supabase. Guarda la contraseña de la base de datos en un lugar seguro.
+2. Abre SQL Editor > New query. Abre supabase-setup.sql de este paquete, copia todo su contenido, pégalo en SQL Editor y pulsa Run.
+3. En Supabase ve a Authentication > Users > Add user. Crea tu correo y contraseña de administrador. No habilites el registro público de usuarios.
+4. Copia el User ID de esa cuenta. Vuelve a SQL Editor y ejecuta, reemplazando UUID_AQUI:
+   insert into public.portfolio_admins (user_id) values ('UUID_AQUI') on conflict do nothing;
+
+C. CONECTAR EL PORTAFOLIO A SUPABASE
+1. En Supabase abre Project Settings > API Keys. Copia Project URL y la Publishable key (la que empieza con sb_publishable_; en proyectos antiguos puede llamarse anon/public).
+2. Abre js/cloud-config.js del repositorio y reemplaza PEGA_AQUI_LA_URL_DE_TU_PROYECTO y PEGA_AQUI_TU_PUBLISHABLE_KEY. Guarda y sube ese cambio a GitHub.
+
+D. ACTIVAR LA IA CON FUENTES
+1. Crea una API key desde https://platform.openai.com/api-keys y revisa Billing/Usage. Esta clave es distinta de la contraseña de ChatGPT.
+2. En Supabase abre Edge Functions > Secrets y agrega:
+   OPENAI_API_KEY = tu clave de API de OpenAI
+   CHAT_RATE_SALT = una frase aleatoria larga que inventes y guardes en privado
+   PORTFOLIO_SITE_ORIGIN = https://jheyssun-stack.github.io
+   Si tu sitio usa otro dominio, pon su origen exacto (protocolo y dominio, sin /Mi-Portafolio/).
+3. En Supabase abre Edge Functions > Deploy a new function > Via Editor. Crea la función con el nombre jheyvx-chat.
+4. Abre supabase/functions/jheyvx-chat/index.ts de este paquete, copia todo el código y pégalo en el editor. Pulsa Deploy function.
+5. En la función, desactiva Verify JWT. El código aplica una cuota de 12 preguntas por IP por minuto y solo permite el origen del sitio configurado.
+
+E. USAR EL PANEL
+1. Abre TU_SITIO/admin.html e inicia sesión con la cuenta creada en Supabase.
+2. Elige Algoritmos y una semana del 1 al 16, o Desarrollo de Aplicaciones y Taller 1 o Taller 2.
+3. Completa título/descripción, selecciona un archivo y pulsa Subir y publicar.
+4. El archivo queda público para que visitantes del portafolio lo puedan abrir. Puedes retirarlo desde la lista del mismo panel.
+
+F. CAMBIAR EL FONDO Y LA MASCOTA
+- La portada ya usa un fondo de gradientes que se mueve suavemente. Para poner una imagen, copia una imagen de fondo en la carpeta assets con el nombre fondo.jpg y en css/estilos.css busca `--portfolio-wallpaper:none`; cámbialo por `--portfolio-wallpaper:url('../assets/fondo.jpg')`.
+- La mascota actual es un personaje original sencillo en assets/jheyvx-avatar.svg. Puedes reemplazar su dibujo SVG. Para usar una foto tuya, guarda assets/mi-foto.jpg y cambia en js/jheyvx-widget.js la ruta `../assets/jheyvx-avatar.svg` por `../assets/mi-foto.jpg`.
+
+ARCHIVOS QUE DEBES SUBIR
+El ZIP conserva las rutas del repositorio e incluye archivos nuevos y versiones actualizadas. No reemplaces el repositorio con este ZIP; copia su contenido dentro del repositorio clonado para que GitHub Desktop detecte tanto los cambios como los archivos nuevos.
+
+FUENTES TÉCNICAS
+Supabase permite desplegar Edge Functions desde su Dashboard y guardar secretos del lado servidor. OpenAI Responses API ofrece la herramienta de búsqueda web usada por Jheyvx. Referencias oficiales: https://supabase.com/docs/guides/functions/quickstart-dashboard y https://developers.openai.com/api/docs/guides/tools-web-search

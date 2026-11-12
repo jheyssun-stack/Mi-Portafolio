@@ -47,3 +47,4 @@ function closeInfoModal(){
 modalClose?.addEventListener("click", closeInfoModal);
 infoModal?.addEventListener("click", e => { if (e.target === infoModal) closeInfoModal(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeInfoModal(); });
+
