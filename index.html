@@ -6,9 +6,14 @@
     <title>Portafolio Académico | Jheyssun Vargas</title>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/jheyvx.css">
+    <style>
+        /* La portada muestra solo el hero; las páginas de trabajos permanecen intactas. */
+        body.landing-page main > section:not(#inicio),
+        body.landing-page > footer { display: none !important; }
+    </style>
 </head>
 
-<body>
+<body class="landing-page">
 
 <header class="header">
 
@@ -18,12 +23,7 @@
 
     <nav class="nav">
         <a href="#inicio">Inicio</a>
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#formacion">Formación</a>
      <a class="btn primary" href="trabajos/trabajos.html">Ver mis trabajos</a>
-        <a href="#proyecto">Proyecto</a>
-        <a href="#habilidades">Habilidades</a>
-        <a href="#contacto">Contacto</a>
     </nav>
 
     <button class="menu-btn" id="menuBtn">☰</button>
@@ -62,7 +62,6 @@
 
         <div class="actions">
     <a class="btn primary" href="trabajos/trabajos.html">Ver mis trabajos</a>
-    <a class="btn ghost" href="#sobre-mi">Conocerme</a>
 </div>
 
         <div class="hero-tags">
