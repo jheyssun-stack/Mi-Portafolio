@@ -8,6 +8,6 @@ alter table public.portfolio_items add constraint valid_course_section check (
   (course = 'apps' and (
     section in ('taller-1','taller-2') or
     section ~ '^taller-1-week-0[1-8]$' or
-    section ~ '^taller-2-week-(0[9]|1[0-8])$'
+    section ~ '^taller-2-week-(0[9]|1[0-6])$'
   ))
 );

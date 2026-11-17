@@ -11,7 +11,7 @@ for (let week = 1; week <= 16; week++) {
   $("algorithmSection").append(option);
 }
 
-for (let week = 1; week <= 18; week++) {
+for (let week = 1; week <= 16; week++) {
   const option = document.createElement("option");
   const workshop = week <= 8 ? 1 : 2;
   option.value = `taller-${workshop}-week-${String(week).padStart(2, "0")}`;
