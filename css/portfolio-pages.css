@@ -1,0 +1,43 @@
+/* Paleta compartida de las páginas interiores: misma marca, acentos distintos. */
+:root{--brand-violet:#9075ff;--brand-lilac:#c19cff;--brand-pink:#f274b4;--brand-blue:#75a9ff;--brand-teal:#67d5d0}
+body.works-index-page{background:radial-gradient(ellipse at 12% 14%,rgba(151,89,255,.19),transparent 34%),radial-gradient(ellipse at 90% 80%,rgba(235,83,165,.13),transparent 33%),linear-gradient(145deg,#0a0b1d,#101027 52%,#080b18)}
+body.works-index-page .works-hero span{color:#c09aff}
+body.works-index-page .works-hero h1 strong,body.apps-course-page .works-hero h1 strong{background:linear-gradient(95deg,#a68aff,#e27bc2 75%,#ff91b3);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.works-index-page .course-card{border-color:rgba(193,156,255,.17)}
+body.works-index-page .course-card:nth-child(1){background:linear-gradient(145deg,rgba(25,36,70,.96),rgba(10,14,31,.98))}
+body.works-index-page .course-card:nth-child(1)::before{background:#668fff}
+body.works-index-page .course-card:nth-child(1) .course-icon{background:#668fff1c;border-color:#668fff55}
+body.works-index-page .course-card:nth-child(1) .course-status{color:#91b5ff}
+body.works-index-page .course-card:nth-child(1) .course-btn{background:linear-gradient(120deg,#5579e8,#786bfa)}
+body.works-index-page .course-card:nth-child(2){background:linear-gradient(145deg,rgba(44,27,68,.94),rgba(17,13,35,.98))}
+body.works-index-page .course-card:nth-child(2)::before{background:#d66bd0}
+body.works-index-page .course-card:nth-child(2) .course-icon{background:#d66bd01c;border-color:#d66bd055}
+body.works-index-page .course-card:nth-child(2) .course-status{color:#dda6ee}
+body.works-index-page .course-card:nth-child(2) .course-btn{background:linear-gradient(120deg,#775ce5,#cb5eaa)}
+body.works-index-page .course-card:nth-child(3){background:linear-gradient(145deg,rgba(23,43,58,.94),rgba(9,20,31,.98))}
+body.works-index-page .course-card:nth-child(3)::before{background:#5dcac5}
+body.works-index-page .course-card:nth-child(3) .course-icon{background:#5dcac51c;border-color:#5dcac555}
+body.works-index-page .course-card:nth-child(3) .course-status{color:#82d8d2}
+body.works-index-page .course-card:nth-child(3) .course-btn{background:linear-gradient(120deg,#318d9c,#5979d9)}
+body.works-index-page .course-card:nth-child(4){background:linear-gradient(145deg,rgba(45,34,66,.94),rgba(16,15,34,.98))}
+body.works-index-page .course-card:nth-child(4)::before{background:#e38b75}
+body.works-index-page .course-card:nth-child(4) .course-icon{background:#e38b751c;border-color:#e38b7555}
+body.works-index-page .course-card:nth-child(4) .course-status{color:#efaa94}
+body.works-index-page .course-card:nth-child(4) .course-btn{background:linear-gradient(120deg,#9b638f,#d27b78)}
+body.apps-course-page{background:radial-gradient(ellipse at 8% 20%,rgba(160,91,255,.2),transparent 35%),radial-gradient(ellipse at 92% 60%,rgba(54,159,190,.11),transparent 34%),linear-gradient(145deg,#0a091b,#111027 52%,#080b18)}
+body.apps-course-page .works-hero span{color:#d19cff}
+body.apps-course-page details.taller:first-of-type{background:linear-gradient(145deg,rgba(36,27,70,.91),rgba(10,14,31,.98));border-color:rgba(169,137,255,.31)}
+body.apps-course-page details.taller:last-of-type{background:linear-gradient(145deg,rgba(20,43,61,.93),rgba(9,17,33,.98));border-color:rgba(103,213,208,.26)}
+body.apps-course-page details.taller:first-of-type>summary:after{color:#c09aff}
+body.apps-course-page details.taller:last-of-type>summary:after{color:#67d5d0}
+body.apps-course-page details.taller:first-of-type .week-number,body.apps-course-page details.taller:first-of-type .week>summary:before{color:#b59aff}
+body.apps-course-page details.taller:last-of-type .week-number,body.apps-course-page details.taller:last-of-type .week>summary:before{color:#72d3d1}
+body.apps-course-page details.taller:last-of-type .week-actions a,body.apps-course-page details.taller:last-of-type .cloud-file-card a{background:linear-gradient(120deg,#318d9c,#5b70d7)}
+body.apps-course-page details.taller:last-of-type .cloud-items{border-color:rgba(103,213,208,.2)}
+body.algorithm-course-page{background:radial-gradient(ellipse at 10% 8%,rgba(91,120,255,.2),transparent 36%),radial-gradient(ellipse at 92% 70%,rgba(161,87,222,.12),transparent 32%),linear-gradient(145deg,#080e1d,#0d1228 55%,#090916)!important}
+body.algorithm-course-page .alg-kicker{color:#b29aff}
+body.algorithm-course-page .alg-hero h1 strong{color:#a999ff}
+body.algorithm-course-page .week-btn:hover,body.algorithm-course-page .week-btn.active{background:linear-gradient(120deg,#5c69e8,#8866df);border-color:#a28bff}
+body.algorithm-course-page .group-title .num{background:linear-gradient(135deg,#6574ef,#a363da)}
+body.algorithm-course-page .info-card:hover{border-color:#9a83ff}
+@media(prefers-reduced-motion:no-preference){body.works-index-page .course-card:hover,body.apps-course-page .taller:hover{box-shadow:0 24px 70px rgba(0,0,0,.3)}}
