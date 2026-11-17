@@ -41,3 +41,41 @@ body.algorithm-course-page .week-btn:hover,body.algorithm-course-page .week-btn.
 body.algorithm-course-page .group-title .num{background:linear-gradient(135deg,#6574ef,#a363da)}
 body.algorithm-course-page .info-card:hover{border-color:#9a83ff}
 @media(prefers-reduced-motion:no-preference){body.works-index-page .course-card:hover,body.apps-course-page .taller:hover{box-shadow:0 24px 70px rgba(0,0,0,.3)}}
+
+/* Negro, plata y oro conectan las secciones; cada materia conserva su acento. */
+body.works-index-page{background:radial-gradient(ellipse at 12% 12%,rgba(23,155,186,.13),transparent 35%),radial-gradient(ellipse at 88% 82%,rgba(195,151,64,.12),transparent 34%),linear-gradient(145deg,#05070b,#111318 52%,#07090d)}
+body.works-index-page .works-hero span{color:#d6bd7c}
+body.works-index-page .works-hero h1 strong{background:linear-gradient(95deg,#f2de9e,#e4e7ec 55%,#b78c45);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.works-index-page .course-card{border-color:rgba(221,211,186,.15)}
+body.works-index-page .course-card:nth-child(1){background:linear-gradient(145deg,rgba(17,42,53,.96),rgba(8,14,20,.98))}
+body.works-index-page .course-card:nth-child(1)::before{background:#16b9db}
+body.works-index-page .course-card:nth-child(1) .course-status{color:#72d8eb}
+body.works-index-page .course-card:nth-child(1) .course-btn{background:linear-gradient(120deg,#167f99,#28b5ce)}
+body.works-index-page .course-card:nth-child(2){background:linear-gradient(145deg,rgba(44,37,24,.94),rgba(15,15,14,.98))}
+body.works-index-page .course-card:nth-child(2)::before{background:#d5ad55}
+body.works-index-page .course-card:nth-child(2) .course-icon{background:#d5ad551c;border-color:#d5ad5555}
+body.works-index-page .course-card:nth-child(2) .course-status{color:#e0c77d}
+body.works-index-page .course-card:nth-child(2) .course-btn{background:linear-gradient(120deg,#94713a,#d0aa5c);color:#11110e}
+body.works-index-page .course-card:nth-child(3){background:linear-gradient(145deg,rgba(34,39,47,.94),rgba(11,14,18,.98))}
+body.works-index-page .course-card:nth-child(3)::before{background:#aeb8c7}
+body.works-index-page .course-card:nth-child(3) .course-icon{background:#aeb8c71c;border-color:#aeb8c755}
+body.works-index-page .course-card:nth-child(3) .course-status{color:#c5ced8}
+body.works-index-page .course-card:nth-child(3) .course-btn{background:linear-gradient(120deg,#5d6d7d,#9ca7b1);color:#101216}
+body.works-index-page .course-card:nth-child(4){background:linear-gradient(145deg,rgba(29,37,43,.94),rgba(11,15,18,.98))}
+body.works-index-page .course-card:nth-child(4)::before{background:#4eafd0}
+body.works-index-page .course-card:nth-child(4) .course-icon{background:#4eafd01c;border-color:#4eafd055}
+body.works-index-page .course-card:nth-child(4) .course-status{color:#8bd4e4}
+body.works-index-page .course-card:nth-child(4) .course-btn{background:linear-gradient(120deg,#3a8297,#609eb5)}
+body.apps-course-page{background:radial-gradient(ellipse at 8% 18%,rgba(197,151,66,.14),transparent 36%),radial-gradient(ellipse at 92% 64%,rgba(3,163,195,.13),transparent 34%),linear-gradient(145deg,#05070b,#111318 55%,#07090d)}
+body.apps-course-page .works-hero span{color:#dfc77f}
+body.apps-course-page .works-hero h1 strong{background:linear-gradient(95deg,#f0dc9b,#e5e8ed 55%,#b58d4c);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.apps-course-page details.taller:first-of-type{background:linear-gradient(145deg,rgba(43,36,24,.93),rgba(12,13,14,.98));border-color:rgba(218,184,105,.32)}
+body.apps-course-page details.taller:last-of-type{background:linear-gradient(145deg,rgba(19,42,50,.94),rgba(8,14,19,.98));border-color:rgba(87,195,211,.29)}
+body.apps-course-page details.taller:first-of-type>summary:after,body.apps-course-page details.taller:first-of-type .week-number,body.apps-course-page details.taller:first-of-type .week>summary:before{color:#e2c77b}
+body.apps-course-page details.taller:last-of-type>summary:after,body.apps-course-page details.taller:last-of-type .week-number,body.apps-course-page details.taller:last-of-type .week>summary:before{color:#6dd4e1}
+body.algorithm-course-page{background:radial-gradient(ellipse at 10% 8%,rgba(15,159,196,.16),transparent 36%),radial-gradient(ellipse at 92% 70%,rgba(196,151,69,.1),transparent 32%),linear-gradient(145deg,#06090e,#10151b 55%,#080a0e)!important}
+body.algorithm-course-page .alg-kicker{color:#ddc77f}
+body.algorithm-course-page .alg-hero h1 strong{color:#a9dce7}
+body.algorithm-course-page .week-btn:hover,body.algorithm-course-page .week-btn.active{background:linear-gradient(120deg,#167c92,#b08b47);border-color:#e0c77e}
+body.algorithm-course-page .group-title .num{background:linear-gradient(135deg,#167f99,#b38b43)}
+body.algorithm-course-page .info-card:hover{border-color:#d4b86e}
