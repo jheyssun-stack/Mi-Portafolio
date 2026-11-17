@@ -24,8 +24,14 @@ create table if not exists public.portfolio_items (
   created_at timestamptz not null default now(),
   constraint valid_course_section check (
     (course = 'algoritmos' and section ~ '^week-(0[1-9]|1[0-6])$') or
-    (course = 'apps' and section in ('taller-1','taller-2'))
+    (course = 'apps' and (section in ('taller-1','taller-2') or section ~ '^taller-1-week-0[1-8]$' or section ~ '^taller-2-week-(0[9]|1[0-8])$'))
   )
+);
+-- Si la tabla ya existía, actualiza su restricción para las semanas de ambos talleres.
+alter table public.portfolio_items drop constraint if exists valid_course_section;
+alter table public.portfolio_items add constraint valid_course_section check (
+  (course = 'algoritmos' and section ~ '^week-(0[1-9]|1[0-6])$') or
+  (course = 'apps' and (section in ('taller-1','taller-2') or section ~ '^taller-1-week-0[1-8]$' or section ~ '^taller-2-week-(0[9]|1[0-8])$'))
 );
 alter table public.portfolio_items enable row level security;
 grant select on public.portfolio_items to anon, authenticated;

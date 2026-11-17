@@ -11,6 +11,14 @@ for (let week = 1; week <= 16; week++) {
   $("algorithmSection").append(option);
 }
 
+for (let week = 1; week <= 18; week++) {
+  const option = document.createElement("option");
+  const workshop = week <= 8 ? 1 : 2;
+  option.value = `taller-${workshop}-week-${String(week).padStart(2, "0")}`;
+  option.textContent = `Taller ${workshop === 1 ? "I" : "II"} · Semana ${week}`;
+  $("appSection").append(option);
+}
+
 if (!cloudReady) {
   $("setupNote").textContent = "Primero configura js/cloud-config.js con la URL y la publishable key del proyecto Supabase.";
   loginPanel.hidden = true;
@@ -94,7 +102,12 @@ async function loadItems() {
   if (error) { list.textContent = "No se pudo cargar la lista."; return; }
   for (const item of data || []) {
     const row = document.createElement("div"); row.className = "item-row";
-    const link = document.createElement("a"); link.href = item.public_url; link.target = "_blank"; link.rel = "noopener noreferrer"; link.textContent = `${item.title} · ${item.course === "apps" ? item.section.replace("-", " ") : item.section.replace("week-", "Semana ")}`;
+    const link = document.createElement("a"); link.href = item.public_url; link.target = "_blank"; link.rel = "noopener noreferrer";
+    const appWeek = item.section.match(/^taller-([12])-week-(\d{2})$/);
+    const location = item.course === "apps"
+      ? (appWeek ? `Taller ${appWeek[1] === "1" ? "I" : "II"} · Semana ${Number(appWeek[2])}` : item.section.replace("taller-", "Taller "))
+      : item.section.replace("week-", "Semana ");
+    link.textContent = `${item.title} · ${location}`;
     const remove = document.createElement("button"); remove.type = "button"; remove.textContent = "Eliminar";
     remove.addEventListener("click", async () => {
       remove.disabled = true;

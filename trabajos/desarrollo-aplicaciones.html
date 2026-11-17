@@ -8,21 +8,32 @@
     <link rel="stylesheet" href="../css/cloud.css">
     <link rel="stylesheet" href="../css/jheyvx.css">
     <style>
-        .weeks-intro{max-width:620px;margin-top:24px;color:rgba(255,255,255,.62);line-height:1.7}
-        .weeks-grid{max-width:1100px;margin:auto;padding:0 30px 110px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-        .week-card{position:relative;min-height:270px;padding:30px;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:linear-gradient(145deg,rgba(20,31,58,.94),rgba(8,14,29,.98));overflow:hidden;transition:.3s ease}
-        .week-card:after{content:"";position:absolute;width:150px;height:150px;right:-65px;top:-65px;border-radius:50%;background:#397df6;filter:blur(70px);opacity:.16}
-        .week-card:hover{transform:translateY(-6px);border-color:rgba(110,168,255,.45)}
-        .week-top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;color:#6ea8ff;font-size:10px;letter-spacing:2px}
-        .week-top b{font:700 34px/1 monospace;color:rgba(255,255,255,.18)}
-        .week-card h2{position:relative;z-index:1;margin:28px 0 12px;color:#fff;font-size:25px}
-        .week-card p{position:relative;z-index:1;color:rgba(255,255,255,.62);line-height:1.65}
-        .week-actions{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
-        .week-actions a{padding:11px 14px;border-radius:9px;background:#397df6;color:#fff;font-size:10px;font-weight:700;letter-spacing:.8px;text-decoration:none;transition:.25s ease}
-        .week-actions a:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(57,125,246,.28)}
-        .week-empty{opacity:.68}.week-featured{border-color:rgba(110,168,255,.42)}
-        .local-note{position:relative;z-index:1;display:block;margin-top:16px;color:rgba(255,255,255,.42);line-height:1.5}
-        @media(max-width:750px){.weeks-grid{grid-template-columns:1fr;padding-left:20px;padding-right:20px}.week-card{min-height:0}}
+        .weeks-intro{max-width:680px;margin-top:24px;color:rgba(255,255,255,.62);line-height:1.7}
+        .taller-list{max-width:1100px;margin:0 auto;padding:0 30px 110px;display:grid;gap:18px}
+        .taller{border:1px solid rgba(158,147,255,.25);border-radius:22px;background:linear-gradient(145deg,rgba(20,24,54,.96),rgba(8,14,29,.98));overflow:hidden}
+        .taller>summary{list-style:none;cursor:pointer;padding:26px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+        .taller>summary::-webkit-details-marker{display:none}
+        .taller>summary:after{content:"+";font-size:30px;color:#b5a5ff}
+        .taller[open]>summary:after{content:"−"}
+        .taller>summary h2{margin:0;color:#fff;font-size:26px}
+        .taller>summary p{margin:8px 0 0;color:#aebbd1;line-height:1.5}
+        .taller-body{padding:0 26px 28px;border-top:1px solid rgba(255,255,255,.08)}
+        .taller-body>.cloud-items{margin-top:18px}
+        .week-list{display:grid;gap:10px;margin-top:18px}
+        .week{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.025);overflow:hidden}
+        .week>summary{list-style:none;cursor:pointer;padding:17px 19px;display:flex;align-items:center;gap:16px;color:#fff}
+        .week>summary::-webkit-details-marker{display:none}
+        .week>summary:before{content:"＋";color:#9b84ff;font-size:18px}
+        .week[open]>summary:before{content:"－"}
+        .week-number{font:700 14px monospace;color:#9f8aff;min-width:82px}
+        .week-title{font-weight:700}
+        .week-content{padding:0 20px 20px 53px;color:#b6c2d8;line-height:1.65}
+        .week-content p{margin:0 0 12px}
+        .week-actions{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+        .week-actions a{padding:9px 12px;border-radius:9px;background:#5549a8;color:#fff;font-size:13px;font-weight:700;text-decoration:none}
+        .week-content .cloud-items{margin-top:14px}
+        .local-note{display:block;margin-top:10px;color:#8492aa;font-size:13px}
+        @media(max-width:700px){.taller-list{padding-left:18px;padding-right:18px}.taller>summary{padding:22px}.taller-body{padding:0 14px 18px}.week-content{padding-left:18px}.week-number{min-width:68px}}
     </style>
 </head>
 <body class="works-page">
@@ -34,24 +45,44 @@
     <section class="works-hero">
         <span>PROYECTOS ACADÉMICOS</span>
         <h1>Desarrollo de<br><strong>Aplicaciones</strong></h1>
-        <p class="weeks-intro">Dos talleres para organizar aplicaciones, informes y nuevas evidencias.</p>
+        <p class="weeks-intro">Elige un taller para ver sus semanas y abrir cada trabajo. Las nuevas evidencias que subas desde el panel privado aparecerán en su semana correspondiente.</p>
     </section>
-    <h2 class="taller-title">Taller 1 · Material actual</h2>
-    <p class="taller-description">Aquí se conserva lo que ya estaba en el portafolio. También puedes añadir archivos desde el panel privado.</p>
-    <section class="cloud-items" data-course="apps" data-section="taller-1" aria-label="Archivos nuevos del Taller 1"></section>
-    <section class="weeks-grid">
-        <article class="week-card"><div class="week-top"><span>SEMANA</span><b>01</b></div><h2>Aplicaciones web</h2><p>Dos versiones de la calculadora geométrica desarrolladas durante la primera semana.</p><div class="week-actions"><a href="../aplicacion/index.html">Abrir calculadora</a><a href="../archivos-faltantes-para-github/entregas/semana-01/calculadora-react.zip" download>Descargar segunda versión</a></div></article>
-        <article class="week-card"><div class="week-top"><span>SEMANA</span><b>02</b></div><h2>Informe de la calculadora</h2><p>Proceso de análisis, diseño, programación, pruebas y resultados de la aplicación.</p><div class="week-actions"><a href="../archivos-faltantes-para-github/entregas/semana-02/informe-calculadora.pdf" target="_blank">Ver informe</a><a href="../archivos-faltantes-para-github/entregas/semana-02/informe-calculadora.docx" download>Descargar Word</a></div></article>
-        <article class="week-card"><div class="week-top"><span>SEMANA</span><b>03</b></div><h2>Calculadora en Java</h2><p>Aplicación de escritorio Java Swing para calcular áreas y perímetros.</p><div class="week-actions"><a href="../archivos-faltantes-para-github/entregas/semana-03/calculadora-geometrica-java.zip" download>Descargar proyecto ZIP</a></div></article>
-        <article class="week-card"><div class="week-top"><span>SEMANA</span><b>04</b></div><h2>Tienda Nova</h2><p>Tienda web sencilla, adaptable y visual con catálogo y carrito de compras.</p><div class="week-actions"><a href="../archivos-faltantes-para-github/entregas/semana-04/tienda-simple/index.html">Abrir tienda</a><a href="../archivos-faltantes-para-github/entregas/semana-04/tienda-simple.zip" download>Descargar ZIP</a><a href="../archivos-faltantes-para-github/entregas/semana-04/informe-tienda.pdf" target="_blank">Ver informe</a></div></article>
-        <article class="week-card week-empty"><div class="week-top"><span>SEMANA</span><b>05</b></div><h2>Sin actividad</h2><p>Semana disponible para incorporar una nueva evidencia académica.</p></article>
-        <article class="week-card"><div class="week-top"><span>SEMANA</span><b>06</b></div><h2>Manual de instalación de SQL Server</h2><p>Guía de instalación y configuración preparada para la sexta semana.</p><div class="week-actions"><a href="../archivos-faltantes-para-github/manual%20de%20desarrollo%20sql.docx" download>Descargar manual</a></div></article>
-        <article class="week-card"><div class="week-top"><span>SEMANA</span><b>07</b></div><h2>Base de datos JHEYVX TECH</h2><p>Script SQL Server para crear usuarios, productos, pedidos y detalle de pedidos.</p><div class="week-actions"><a href="../archivos-faltantes-para-github/entregas/semana-07/base-datos-jheyvx-tech.sql" download>Descargar SQL</a></div></article>
-        <article class="week-card week-featured"><div class="week-top"><span>SEMANA</span><b>08</b></div><h2>Tienda JHEYVX TECH</h2><p>Aplicación Java y SQL Server ejecutada localmente en el puerto 3000.</p><div class="week-actions"><a href="http://localhost:3000" target="_blank" rel="noopener">Abrir localhost:3000</a></div><small class="local-note">Este enlace funciona cuando el servidor está iniciado en la computadora.</small></article>
+    <section class="taller-list" aria-label="Talleres de Desarrollo de Aplicaciones">
+        <details class="taller">
+            <summary><div><h2>Taller I</h2><p>Semanas 1 a 8 · trabajos actuales y nuevas evidencias</p></div></summary>
+            <div class="taller-body">
+                <div class="cloud-items" data-course="apps" data-section="taller-1" aria-label="Archivos anteriores sin semana asignada"></div>
+                <div class="week-list">
+                    <details class="week"><summary><span class="week-number">SEMANA 01</span><span class="week-title">Aplicaciones web</span></summary><div class="week-content"><p>Dos versiones de la calculadora geométrica desarrolladas durante la primera semana.</p><div class="week-actions"><a href="../aplicacion/index.html">Abrir calculadora</a><a href="../archivos-faltantes-para-github/entregas/semana-01/calculadora-react.zip" download>Descargar segunda versión</a></div><div class="cloud-items" data-course="apps" data-section="taller-1-week-01"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 02</span><span class="week-title">Informe de la calculadora</span></summary><div class="week-content"><p>Proceso de análisis, diseño, programación, pruebas y resultados de la aplicación.</p><div class="week-actions"><a href="../archivos-faltantes-para-github/entregas/semana-02/informe-calculadora.pdf" target="_blank" rel="noopener">Ver informe</a><a href="../archivos-faltantes-para-github/entregas/semana-02/informe-calculadora.docx" download>Descargar Word</a></div><div class="cloud-items" data-course="apps" data-section="taller-1-week-02"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 03</span><span class="week-title">Calculadora en Java</span></summary><div class="week-content"><p>Aplicación de escritorio Java Swing para calcular áreas y perímetros.</p><div class="week-actions"><a href="../archivos-faltantes-para-github/entregas/semana-03/calculadora-geometrica-java.zip" download>Descargar proyecto ZIP</a></div><div class="cloud-items" data-course="apps" data-section="taller-1-week-03"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 04</span><span class="week-title">Tienda Nova</span></summary><div class="week-content"><p>Tienda web sencilla, adaptable y visual con catálogo y carrito de compras.</p><div class="week-actions"><a href="../archivos-faltantes-para-github/entregas/semana-04/tienda-simple/index.html">Abrir tienda</a><a href="../archivos-faltantes-para-github/entregas/semana-04/tienda-simple.zip" download>Descargar ZIP</a><a href="../archivos-faltantes-para-github/entregas/semana-04/informe-tienda.pdf" target="_blank" rel="noopener">Ver informe</a></div><div class="cloud-items" data-course="apps" data-section="taller-1-week-04"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 05</span><span class="week-title">Semana disponible</span></summary><div class="week-content"><p>Semana disponible para incorporar una nueva evidencia académica.</p><div class="cloud-items" data-course="apps" data-section="taller-1-week-05"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 06</span><span class="week-title">Manual de instalación de SQL Server</span></summary><div class="week-content"><p>Guía de instalación y configuración preparada para la sexta semana.</p><div class="week-actions"><a href="../archivos-faltantes-para-github/manual%20de%20desarrollo%20sql.docx" download>Descargar manual</a></div><div class="cloud-items" data-course="apps" data-section="taller-1-week-06"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 07</span><span class="week-title">Base de datos JHEYVX TECH</span></summary><div class="week-content"><p>Script SQL Server para crear usuarios, productos, pedidos y detalle de pedidos.</p><div class="week-actions"><a href="../archivos-faltantes-para-github/entregas/semana-07/base-datos-jheyvx-tech.sql" download>Descargar SQL</a></div><div class="cloud-items" data-course="apps" data-section="taller-1-week-07"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 08</span><span class="week-title">Tienda JHEYVX TECH</span></summary><div class="week-content"><p>Aplicación Java y SQL Server ejecutada localmente en el puerto 3000.</p><div class="week-actions"><a href="http://localhost:3000" target="_blank" rel="noopener">Abrir localhost:3000</a></div><small class="local-note">Este enlace funciona cuando el servidor está iniciado en la computadora.</small><div class="cloud-items" data-course="apps" data-section="taller-1-week-08"></div></div></details>
+                </div>
+            </div>
+        </details>
+        <details class="taller">
+            <summary><div><h2>Taller II</h2><p>Semanas 9 a 18 · espacio para tus próximos trabajos</p></div></summary>
+            <div class="taller-body">
+                <div class="cloud-items" data-course="apps" data-section="taller-2" aria-label="Archivos anteriores sin semana asignada"></div>
+                <div class="week-list">
+                    <details class="week"><summary><span class="week-number">SEMANA 09</span><span class="week-title">Disponible para agregar trabajo</span></summary><div class="week-content"><p>Sube aquí tus archivos desde el panel privado.</p><div class="cloud-items" data-course="apps" data-section="taller-2-week-09"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 10</span><span class="week-title">Disponible para agregar trabajo</span></summary><div class="week-content"><p>Sube aquí tus archivos desde el panel privado.</p><div class="cloud-items" data-course="apps" data-section="taller-2-week-10"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 11</span><span class="week-title">Disponible para agregar trabajo</span></summary><div class="week-content"><p>Sube aquí tus archivos desde el panel privado.</p><div class="cloud-items" data-course="apps" data-section="taller-2-week-11"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 12</span><span class="week-title">Disponible para agregar trabajo</span></summary><div class="week-content"><p>Sube aquí tus archivos desde el panel privado.</p><div class="cloud-items" data-course="apps" data-section="taller-2-week-12"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 13</span><span class="week-title">Disponible para agregar trabajo</span></summary><div class="week-content"><p>Sube aquí tus archivos desde el panel privado.</p><div class="cloud-items" data-course="apps" data-section="taller-2-week-13"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 14</span><span class="week-title">Disponible para agregar trabajo</span></summary><div class="week-content"><p>Sube aquí tus archivos desde el panel privado.</p><div class="cloud-items" data-course="apps" data-section="taller-2-week-14"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 15</span><span class="week-title">Disponible para agregar trabajo</span></summary><div class="week-content"><p>Sube aquí tus archivos desde el panel privado.</p><div class="cloud-items" data-course="apps" data-section="taller-2-week-15"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 16</span><span class="week-title">Disponible para agregar trabajo</span></summary><div class="week-content"><p>Sube aquí tus archivos desde el panel privado.</p><div class="cloud-items" data-course="apps" data-section="taller-2-week-16"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 17</span><span class="week-title">Disponible para agregar trabajo</span></summary><div class="week-content"><p>Sube aquí tus archivos desde el panel privado.</p><div class="cloud-items" data-course="apps" data-section="taller-2-week-17"></div></div></details>
+                    <details class="week"><summary><span class="week-number">SEMANA 18</span><span class="week-title">Disponible para agregar trabajo</span></summary><div class="week-content"><p>Sube aquí tus archivos desde el panel privado.</p><div class="cloud-items" data-course="apps" data-section="taller-2-week-18"></div></div></details>
+                </div>
+            </div>
+        </details>
     </section>
-    <h2 class="taller-title">Taller 2</h2>
-    <p class="taller-description">Esta sección está lista para subir tus próximos trabajos. Los archivos que agregues desde el panel aparecerán aquí para todos.</p>
-    <section class="cloud-items" data-course="apps" data-section="taller-2" aria-label="Archivos del Taller 2"></section>
 </main>
 <footer><span>JV · Jheyssun Vargas</span><p>Portafolio Académico · 2026</p></footer>
 <script src="../js/cloud-config.js"></script>
