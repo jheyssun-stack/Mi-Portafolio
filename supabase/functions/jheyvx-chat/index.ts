@@ -34,8 +34,8 @@ Deno.serve(async (request) => {
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || (() => {
       try { return JSON.parse(Deno.env.get("SUPABASE_SECRET_KEYS") || "{}").default; } catch { return ""; }
     })();
-    const openAiKey = Deno.env.get("OPENAI_API_KEY");
-    if (!salt || !url || !serviceKey || !openAiKey) throw new Error("Faltan secretos de configuración en Supabase.");
+    const groqKey = Deno.env.get("GROQ_API_KEY");
+    if (!salt || !url || !serviceKey || !groqKey) throw new Error("Faltan secretos de configuración en Supabase.");
 
     const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`${salt}:${ip}`));
     const ipHash = Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, "0")).join("");
@@ -44,24 +44,28 @@ Deno.serve(async (request) => {
     if (limitError) throw limitError;
     if (!permitted) return new Response(JSON.stringify({ error: "Llegaste al límite de preguntas por ahora. Inténtalo en un minuto." }), { status: 429, headers });
 
-    const openAiResponse = await fetch("https://api.openai.com/v1/responses", {
+    const systemPrompt = "Eres Jheyvx, un asistente útil integrado en el portafolio académico de Jheyssun Vargas. Responde en español salvo que te pidan otro idioma. Sé claro, explica los pasos y muestra unidades cuando correspondan. Para preguntas factuales, actuales, académicas o técnicas usa la búsqueda web; prefiere fuentes oficiales, universidades y documentación primaria. Distingue los hechos de la incertidumbre, nunca inventes cifras ni referencias. Cuando la búsqueda web proporcione fuentes, menciona sus URL de manera clara. No afirmes ser ChatGPT ni el dueño del portafolio.";
+    const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
-      headers: { "Authorization": `Bearer ${openAiKey}`, "Content-Type": "application/json" },
+      headers: { "Authorization": `Bearer ${groqKey}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: Deno.env.get("OPENAI_MODEL") || "gpt-6-luna",
-        instructions: "Eres Jheyvx, un asistente útil integrado en el portafolio académico de Jheyssun Vargas. Responde en español salvo que te pidan otro idioma. Sé claro, explica los pasos y muestra unidades cuando correspondan. Para preguntas factuales, actuales, académicas o técnicas usa la búsqueda web; prefiere fuentes oficiales, universidades y documentación primaria. Distingue los hechos de la incertidumbre, nunca inventes cifras ni referencias. Incluye citas vinculadas a las fuentes consultadas. No afirmes ser ChatGPT ni el dueño del portafolio.",
-        tools: [{ type: "web_search" }],
-        input: normalized,
-        max_output_tokens: 750
+        model: "openai/gpt-oss-120b",
+        messages: [{ role: "system", content: systemPrompt }, ...normalized],
+        tools: [{ type: "browser_search" }],
+        max_completion_tokens: 750,
+        temperature: 1
       })
     });
-    const result = await openAiResponse.json();
-    if (!openAiResponse.ok) return new Response(JSON.stringify({ error: "El servicio de IA no respondió. Revisa la configuración y el saldo de la API." }), { status: 502, headers });
-    const chunks = (result.output || []).filter((item: any) => item.type === "message").flatMap((item: any) => item.content || []);
-    const answer = chunks.filter((item: any) => item.type === "output_text").map((item: any) => item.text).join("\n\n") || result.output_text || "No recibí una respuesta de texto.";
-    const sources = chunks.flatMap((item: any) => (item.annotations || []).filter((a: any) => a.type === "url_citation")
-      .map((a: any) => ({ title: a.title || a.url, url: a.url })));
-    const uniqueSources = [...new Map(sources.filter((s: any) => /^https:\/\//.test(s.url)).map((s: any) => [s.url, s])).values()].slice(0, 8);
+    const result = await groqResponse.json();
+    if (!groqResponse.ok) {
+      console.error("Groq API error", groqResponse.status, result);
+      return new Response(JSON.stringify({ error: "El servicio gratuito de IA no respondió. Puede que su límite temporal se haya alcanzado." }), { status: 502, headers });
+    }
+    const answer = result.choices?.[0]?.message?.content || "No recibí una respuesta de texto.";
+    const sources = (result.choices?.[0]?.message?.annotations || [])
+      .filter((a: any) => a.type === "url_citation" && /^https:\/\//.test(a.url_citation?.url || a.url || ""))
+      .map((a: any) => ({ title: a.url_citation?.title || a.title || a.url_citation?.url || a.url, url: a.url_citation?.url || a.url }));
+    const uniqueSources = [...new Map(sources.map((s: any) => [s.url, s])).values()].slice(0, 8);
     return new Response(JSON.stringify({ answer, sources: uniqueSources }), { status: 200, headers });
   } catch (error) {
     console.error("jheyvx-chat error", error);
