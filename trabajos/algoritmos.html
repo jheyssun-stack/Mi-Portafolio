@@ -282,9 +282,8 @@ footer {
   <div class="eyebrow">PORTAFOLIO ACADÉMICO · UPLA</div>
   <h1>Algoritmos</h1>
   <p>
-    Selecciona una de las 16 semanas para ver tus trabajos.
-    Abre cada enunciado para visualizar sus imágenes
-    sin salir del portafolio.
+    Abre una semana para explorar las infografías disponibles.
+    Las láminas resumen cada tema con diagramas y ejemplos de estudio.
   </p>
 </section>
 
@@ -315,14 +314,14 @@ const weeks = [
   {n:6, desc:"Pilas, inventario y control de historial."},
   {n:7, desc:"Colas y procesamiento de datos."},
   {n:8, desc:"Árboles y recorridos."},
-  {n:9, desc:"Trabajos y evidencias de la Semana 9."},
-  {n:10, desc:"Trabajos y evidencias de la Semana 10."},
-  {n:11, desc:"Trabajos y evidencias de la Semana 11."},
-  {n:12, desc:"Trabajos y evidencias de la Semana 12."},
-  {n:13, desc:"Trabajos y evidencias de la Semana 13."},
-  {n:14, desc:"Trabajos y evidencias de la Semana 14."},
-  {n:15, desc:"Trabajos y evidencias de la Semana 15."},
-  {n:16, desc:"Trabajos y evidencias de la Semana 16."}
+  {n:9, desc:"Recursividad: Ackermann, evaluación de expresiones, costos de productos y dependencias."},
+  {n:10, desc:"16 infografías sobre operaciones de una lista simplemente enlazada de alumnos."},
+  {n:11, desc:"33 infografías: lista circular de pacientes y operaciones circulares con alumnos."},
+  {n:12, desc:"27 infografías sobre citas médicas y operaciones de listas doblemente enlazadas."},
+  {n:13, desc:"Sin infografías publicadas todavía."},
+  {n:14, desc:"Sin infografías publicadas todavía."},
+  {n:15, desc:"Sin infografías publicadas todavía."},
+  {n:16, desc:"Sin infografías publicadas todavía."}
 ];
 
 const titles6 = {
@@ -331,7 +330,7 @@ const titles6 = {
   "enunciado6.3": "Enunciado 3 · Historial y control de versiones"
 };
 
-const imageExtensions = /\.(png|jpe?g|webp|gif|bmp)$/i;
+const imageExtensions = /\.(png|jpe?g|webp|gif|bmp|svg)$/i;
 const weeksEl = document.getElementById("weeks");
 
 
@@ -384,7 +383,7 @@ async function findWeekFiles(n) {
     `trabajos/SEMANA${n}`
   ];
 
-  const imageExtensions = /\.(png|jpe?g|webp|gif|bmp)$/i;
+  const imageExtensions = /\.(png|jpe?g|webp|gif|bmp|svg)$/i;
 
   // Buscar carpetas normales de la semana.
   for (const folder of candidates) {
