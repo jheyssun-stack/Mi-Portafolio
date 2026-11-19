@@ -352,122 +352,37 @@ function rawUrl(path) {
 }
 
 
-async function getContents(path) {
-  const cleanPath = path
-    .split("/")
-    .filter(Boolean)
-    .map(encodeURIComponent)
-    .join("/");
-
-  const url =
-    `https://api.github.com/repos/${OWNER}/${REPO}/contents/` +
-    `${cleanPath}?ref=${BRANCH}`;
-
-  const response = await fetch(url);
-
-  if (!response.ok) {
-    throw new Error("No se pudo acceder a " + cleanPath);
-  }
-
-  return response.json();
-}
-
+let algorithmManifestPromise;
 async function findWeekFiles(n) {
-  const candidates = [
-    `trabajos/semana${n}`,
-    `trabajos/Semana${n}`,
-    `trabajos/semana${String(n).padStart(2, "0")}`,
-    `semana${n}`,
-    `Semana${n}`,
-    `SEMANA${n}`,
-    `trabajos/SEMANA${n}`
-  ];
-
-  const imageExtensions = /\.(png|jpe?g|webp|gif|bmp|svg)$/i;
-
-  // Buscar carpetas normales de la semana.
-  for (const folder of candidates) {
-    try {
-      const items = await getContents(folder);
-
-      if (Array.isArray(items)) {
-        const files = items.filter(item =>
-          item.type === "file" &&
-          imageExtensions.test(item.name)
-        );
-
-        const subfolders = items.filter(item =>
-          item.type === "dir"
-        );
-
-        if (files.length || subfolders.length) {
-          return {
-            folder,
-            items,
-            files,
-            subfolders
-          };
-        }
-      }
-    } catch (error) {
-      // La carpeta no existe; continuar buscando.
-    }
+  if (!algorithmManifestPromise) {
+    algorithmManifestPromise = fetch("../assets/algorithm-images.json")
+      .then(response => {
+        if (!response.ok) throw new Error("No se pudo cargar el índice local de imágenes.");
+        return response.json();
+      });
   }
-
-  // Buscar los enunciados de la Semana 6 en la raíz
-  // o dentro de la carpeta trabajos.
-  if (n === 6) {
-    const possibleFolders = [
-      "",
-      "trabajos"
-    ];
-
-    for (const base of possibleFolders) {
-      try {
-        const items = await getContents(base);
-
-        if (Array.isArray(items)) {
-          const subfolders = items.filter(item =>
-            item.type === "dir" &&
-            /^enunciado6[._-]?[123]$/i.test(item.name)
-          );
-
-          if (subfolders.length) {
-            return {
-              folder: base,
-              items,
-              files: items.filter(item =>
-                item.type === "file" &&
-                imageExtensions.test(item.name)
-              ),
-              subfolders
-            };
-          }
-        }
-      } catch (error) {
-        // Continuar con la siguiente ubicación.
-      }
-    }
-  }
-
-  return null;
+  const manifest = await algorithmManifestPromise;
+  const entry = manifest[String(n)];
+  if (!entry) return null;
+  const asFile = path => ({ type: "file", name: path.split("/").pop(), path });
+  return {
+    files: entry.files.map(asFile),
+    groups: entry.groups.map(group => ({ name: group.name, files: group.files.map(asFile) }))
+  };
 }
-function addImageCard(gallery, file, folder) {
+
+function addImageCard(gallery, file) {
   const card = make("article", "card");
   const img = document.createElement("img");
-  const src = rawUrl(folder + "/" + file.name);
-
+  const src = "../" + file.path.split("/").map(encodeURIComponent).join("/");
   img.src = src;
   img.alt = file.name;
   img.loading = "lazy";
-
   img.addEventListener("click", () => {
     document.getElementById("lightboxImg").src = src;
     document.getElementById("lightbox").classList.add("open");
   });
-
   img.onerror = () => card.remove();
-
   card.appendChild(img);
   card.appendChild(make("div", "cap", file.name));
   gallery.appendChild(card);
@@ -511,162 +426,53 @@ function createWeek(w) {
 async function loadWeek(w, inside) {
   inside.replaceChildren();
   inside.appendChild(make("p", "status", "Cargando trabajos..."));
-
-  const result = await findWeekFiles(w.n);
-  inside.replaceChildren();
-
-  if (!result) {
-    inside.appendChild(make(
-      "div",
-      "empty",
-      `No se encontró la carpeta de la Semana ${w.n}. ` +
-      `Verifica que sus imágenes estén subidas a ` +
-      `trabajos/semana${w.n}/ en GitHub.`
-    ));
-    return;
-  }
-
-  const {folder, items} = result;
-  const images = items.filter(
-    f => f.type === "file" && imageExtensions.test(f.name)
-  );
-
-  const subfolders = items.filter(f => f.type === "dir");
-
-  if (w.n === 6) {
-    if (subfolders.length) {
-      const groups = make("div", "groups");
-
-      subfolders.forEach(sub => {
-        const group = make("details", "group");
-        const title = titles6[sub.name] || sub.name.replace(/[-_]/g, " ");
-
-        group.appendChild(make("summary", "", title));
-
-        const gallery = make("div", "gallery");
-        group.appendChild(gallery);
-
-        group.addEventListener("toggle", async () => {
-          if (!group.open || group.dataset.loaded) return;
-
-          group.dataset.loaded = "true";
-          gallery.replaceChildren();
-          gallery.appendChild(make("p", "status", "Cargando imágenes..."));
-
-          try {
-            const files = await getContents(folder + "/" + sub.name);
-            gallery.replaceChildren();
-
-            const imgs = files.filter(
-              f => f.type === "file" && imageExtensions.test(f.name)
-            );
-
-            if (!imgs.length) {
-              gallery.appendChild(make(
-                "div", "empty",
-                "No hay imágenes en este enunciado."
-              ));
-              return;
-            }
-
-            imgs.forEach(file =>
-              addImageCard(gallery, file, folder + "/" + sub.name)
-            );
-          } catch (error) {
-            gallery.replaceChildren();
-            gallery.appendChild(make(
-              "div", "empty",
-              "No se pudieron cargar las imágenes. Comprueba la carpeta."
-            ));
-          }
-        });
-
-        groups.appendChild(group);
-      });
-
-      inside.appendChild(make(
-        "p", "notice",
-        "Selecciona cada enunciado para desplegar sus imágenes."
-      ));
-
-      inside.appendChild(groups);
+  try {
+    const result = await findWeekFiles(w.n);
+    inside.replaceChildren();
+    if (!result) {
+      inside.appendChild(make("div", "empty", `No hay imágenes locales registradas para la Semana ${w.n}.`));
+      return;
     }
-
-    if (images.length) {
+    if (result.files.length) {
       const gallery = make("div", "gallery");
-      images.forEach(file => addImageCard(gallery, file, folder));
+      result.files.forEach(file => addImageCard(gallery, file));
       inside.appendChild(gallery);
     }
-
-    if (!images.length && !subfolders.length) {
-      inside.appendChild(make(
-        "div", "empty",
-        "No hay imágenes ni carpetas de enunciados en esta semana."
-      ));
+    if (result.groups.length) {
+      const groups = make("div", "groups");
+      result.groups.forEach(groupData => {
+        const group = make("details", "group");
+        const label = w.n === 6
+          ? (titles6[groupData.name] || groupData.name.replace(/[-_]/g, " "))
+          : groupData.name.replace(/[-_]/g, " ");
+        group.appendChild(make("summary", "", label));
+        const gallery = make("div", "gallery");
+        group.appendChild(gallery);
+        group.addEventListener("toggle", () => {
+          if (!group.open || group.dataset.loaded) return;
+          group.dataset.loaded = "true";
+          groupData.files.forEach(file => addImageCard(gallery, file));
+          if (!groupData.files.length) gallery.appendChild(make("div", "empty", "No hay imágenes en esta sección."));
+        });
+        groups.appendChild(group);
+      });
+      inside.appendChild(groups);
     }
-
-    const zip = make("a", "btn", "Descargar ZIP de Semana 6");
-    zip.href = rawUrl("semana6.zip");
-    zip.target = "_blank";
-    zip.rel = "noopener";
-
-    const links = make("div", "links");
-    links.appendChild(zip);
-    inside.appendChild(links);
-
-    return;
-  }
-
-  if (images.length) {
-    const gallery = make("div", "gallery");
-    images.forEach(file => addImageCard(gallery, file, folder));
-    inside.appendChild(gallery);
-  }
-
-  for (const sub of subfolders) {
-    const group = make("details", "group");
-    group.appendChild(make(
-      "summary", "",
-      sub.name.replace(/[-_]/g, " ")
-    ));
-
-    const gallery = make("div", "gallery");
-    group.appendChild(gallery);
-    inside.appendChild(group);
-
-    group.addEventListener("toggle", async () => {
-      if (!group.open || group.dataset.loaded) return;
-      group.dataset.loaded = "true";
-
-      try {
-        const files = await getContents(folder + "/" + sub.name);
-        const imgs = files.filter(
-          f => f.type === "file" && imageExtensions.test(f.name)
-        );
-
-        if (!imgs.length) {
-          gallery.appendChild(make(
-            "div", "empty", "No hay imágenes en esta sección."
-          ));
-          return;
-        }
-
-        imgs.forEach(file =>
-          addImageCard(gallery, file, folder + "/" + sub.name)
-        );
-      } catch (error) {
-        gallery.appendChild(make(
-          "div", "empty", "No se pudieron cargar las imágenes."
-        ));
-      }
-    });
-  }
-
-  if (!images.length && !subfolders.length) {
-    inside.appendChild(make(
-      "div", "empty",
-      "Esta carpeta no contiene imágenes compatibles."
-    ));
+    if (!result.files.length && !result.groups.length) {
+      inside.appendChild(make("div", "empty", "No hay imágenes locales en esta semana. Si agregaste archivos desde el panel, revisa el bloque de archivos de la nube."));
+    }
+    if (w.n === 6) {
+      const zip = make("a", "btn", "Descargar ZIP de Semana 6");
+      zip.href = rawUrl("semana6.zip");
+      zip.target = "_blank";
+      zip.rel = "noopener";
+      const links = make("div", "links");
+      links.appendChild(zip);
+      inside.appendChild(links);
+    }
+  } catch (error) {
+    inside.replaceChildren(make("div", "empty", "No se pudo cargar el índice local. Recarga la página en unos minutos."));
+    console.error(error);
   }
 }
 

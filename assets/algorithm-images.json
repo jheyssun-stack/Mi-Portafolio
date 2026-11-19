@@ -1,0 +1,268 @@
+{
+  "1": {
+    "files": [
+      "semana1/guia-ilustrada-promedio-en-java.png",
+      "semana1/infografia-contar-numeros-pares-en-java.png",
+      "semana1/infografia-del-metodo-3-en-java.png",
+      "semana1/infografia-educativa-sumar-una-matriz-en-java.png",
+      "semana1/infografia-java-menores-por-columna.png",
+      "semana1/infografia-java-mover-filas-a-la-derecha-1.png",
+      "semana1/infografia-java-mover-filas-a-la-derecha.png",
+      "semana1/infografia-java-promedio-de-columnas.png",
+      "semana1/infografia-java-validar-matrices-vacias.png",
+      "semana1/infografia-metodo-14-suma-de-arreglos.png",
+      "semana1/infografia-metodo-4-matrices-en-java.png",
+      "semana1/infografia-metodo-java-eliminar-un-elemento.png",
+      "semana1/infografia-metodo-java-para-comparar-matrices.png",
+      "semana1/infografia-pastel-metodo-6-en-java.png",
+      "semana1/metodo-15-la-moda-en-java.png",
+      "semana1/metodo-17-calculando-la-mediana-en-java-1.png",
+      "semana1/metodo-7-suma-y-promedio-en-java.png",
+      "semana1/promedio-en-java-metodo-13.png"
+    ],
+    "groups": []
+  },
+  "2": {
+    "files": [],
+    "groups": []
+  },
+  "3": {
+    "files": [],
+    "groups": [
+      {
+        "name": "enunciado 1",
+        "files": [
+          "semana3/enunciado 1/infografia-java-nombres-notas-y-promedio-1.png",
+          "semana3/enunciado 1/infografia-java-nombres-notas-y-promedio.png"
+        ]
+      },
+      {
+        "name": "enunciado 2",
+        "files": [
+          "semana3/enunciado 2/infografia-java-menu-y-promedios.png"
+        ]
+      },
+      {
+        "name": "enunciado 3",
+        "files": [
+          "semana3/enunciado 3/infografia-java-calcular-promedios-de-alumnos.png",
+          "semana3/enunciado 3/infografia-java-ingreso-de-alumnos.png",
+          "semana3/enunciado 3/infografia-java-metodo-menu-paso-a-paso.png",
+          "semana3/enunciado 3/infografia-java-mostraralumnos-y-datos-de-alumnos.png"
+        ]
+      },
+      {
+        "name": "enunciado 4",
+        "files": [
+          "semana3/enunciado 4/infografia-del-metodo-ingresaralumnos.png",
+          "semana3/enunciado 4/infografia-educativa-de-mostraralumnos.png",
+          "semana3/enunciado 4/infografia-java-calculo-de-promedios-alumnos-1.png",
+          "semana3/enunciado 4/infografia-java-calculo-de-promedios-alumnos.png",
+          "semana3/enunciado 4/infografia-java-metodo-main.png",
+          "semana3/enunciado 4/infografia-java-metodo-menu.png",
+          "semana3/enunciado 4/infografia-java-promedio-general-del-salon.png"
+        ]
+      },
+      {
+        "name": "enunciado 5",
+        "files": [
+          "semana3/enunciado 5/guia-visual-del-metodo-ingresaralumnos.png",
+          "semana3/enunciado 5/guia-visual-del-metodo-main-en-java.png",
+          "semana3/enunciado 5/guia-visual-ordenar-alumnos-en-java.png",
+          "semana3/enunciado 5/infografia-del-metodo-mostrarpromedios.png",
+          "semana3/enunciado 5/infografia-educativa-metodo-buscaralumno.png",
+          "semana3/enunciado 5/infografia-java-metodo-calcularpromedios.png"
+        ]
+      }
+    ]
+  },
+  "4": {
+    "files": [
+      "semana4/chatgpt-image-28-sept-2026-12-40-05-p-m.png",
+      "semana4/chatgpt-image-28-sept-2026-12-40-27-p-m.png",
+      "semana4/chatgpt-image-28-sept-2026-12-40-59-p-m.png",
+      "semana4/chatgpt-image-28-sept-2026-12-41-26-p-m.png",
+      "semana4/chatgpt-image-28-sept-2026-12-42-10-p-m.png",
+      "semana4/chatgpt-image-28-sept-2026-12-45-36-p-m.png",
+      "semana4/chatgpt-image-28-sept-2026-12-46-10-p-m.png",
+      "semana4/chatgpt-image-28-sept-2026-12-47-08-p-m.png",
+      "semana4/chatgpt-image-28-sept-2026-12-47-43-p-m.png",
+      "semana4/chatgpt-image-28-sept-2026-12-48-28-p-m.png"
+    ],
+    "groups": []
+  },
+  "5": {
+    "files": [],
+    "groups": []
+  },
+  "6": {
+    "files": [],
+    "groups": [
+      {
+        "name": "enunciado6.1",
+        "files": [
+          "enunciado6.1/Infografía Java_ Método eliminarPila() (POP).png",
+          "enunciado6.1/Infografía Método buscarAlumno() en Java.png",
+          "enunciado6.1/Infografía del Método 8_ Estado de la Pila.png",
+          "enunciado6.1/Infografía del Método POP en Pilas (1).png",
+          "enunciado6.1/Infografía del método POP en pilas.png",
+          "enunciado6.1/Infografía del método insertarPila en Java.png",
+          "enunciado6.1/Infografía del método mayor promedio en pila.png",
+          "enunciado6.1/Infografía sobre modificar datos en una pila Java.png",
+          "enunciado6.1/Infografía_ Método mostrarPila()中央値との差.png"
+        ]
+      },
+      {
+        "name": "enunciado6.2",
+        "files": [
+          "enunciado6.2/Infografía Método 9_ Equipos superiores (1).png",
+          "enunciado6.2/Infografía Método 9_ Equipos superiores.png",
+          "enunciado6.2/Infografía POP_ Desapilar computadora.png",
+          "enunciado6.2/Infografía del método de búsqueda por serie.png",
+          "enunciado6.2/Infografía del método mostrarInventario en Java.png",
+          "enunciado6.2/Infografía del método peek en una pila.png",
+          "enunciado6.2/Infografía del valor total del inventario.png",
+          "enunciado6.2/Infografía insertarInicio_ lista enlazada en Java.png",
+          "enunciado6.2/Infografía sobre vaciar una pila de inventario.png",
+          "enunciado6.2/Infografía_ Contar computadoras en una pila.png"
+        ]
+      },
+      {
+        "name": "enunciado6.3",
+        "files": [
+          "enunciado6.3/Infografía Java_ Mostrar Estado del Historial.png",
+          "enunciado6.3/Infografía Java_ Método rehacerAccion().png",
+          "enunciado6.3/Infografía del historial de acciones en Java.png",
+          "enunciado6.3/Infografía del método deshacerAccion().png",
+          "enunciado6.3/Infografía del método obtenerHistorial().png",
+          "enunciado6.3/Infografía_ Sistema de Control de Versiones con Dos Pilas.png",
+          "enunciado6.3/Método 5_ Búsqueda en el historial.png"
+        ]
+      }
+    ]
+  },
+  "7": {
+    "files": [],
+    "groups": []
+  },
+  "8": {
+    "files": [],
+    "groups": []
+  },
+  "9": {
+    "files": [
+      "trabajos/semana9/infografia_01.svg",
+      "trabajos/semana9/infografia_02.svg",
+      "trabajos/semana9/infografia_03.svg",
+      "trabajos/semana9/infografia_04.svg"
+    ],
+    "groups": []
+  },
+  "10": {
+    "files": [
+      "trabajos/semana10/infografia_01.svg",
+      "trabajos/semana10/infografia_02.svg",
+      "trabajos/semana10/infografia_03.svg",
+      "trabajos/semana10/infografia_04.svg",
+      "trabajos/semana10/infografia_05.svg",
+      "trabajos/semana10/infografia_06.svg",
+      "trabajos/semana10/infografia_07.svg",
+      "trabajos/semana10/infografia_08.svg",
+      "trabajos/semana10/infografia_09.svg",
+      "trabajos/semana10/infografia_10.svg",
+      "trabajos/semana10/infografia_11.svg",
+      "trabajos/semana10/infografia_12.svg",
+      "trabajos/semana10/infografia_13.svg",
+      "trabajos/semana10/infografia_14.svg",
+      "trabajos/semana10/infografia_15.svg",
+      "trabajos/semana10/infografia_16.svg"
+    ],
+    "groups": []
+  },
+  "11": {
+    "files": [
+      "trabajos/semana11/infografia_01.svg",
+      "trabajos/semana11/infografia_02.svg",
+      "trabajos/semana11/infografia_03.svg",
+      "trabajos/semana11/infografia_04.svg",
+      "trabajos/semana11/infografia_05.svg",
+      "trabajos/semana11/infografia_06.svg",
+      "trabajos/semana11/infografia_07.svg",
+      "trabajos/semana11/infografia_08.svg",
+      "trabajos/semana11/infografia_09.svg",
+      "trabajos/semana11/infografia_10.svg",
+      "trabajos/semana11/infografia_11.svg",
+      "trabajos/semana11/infografia_12.svg",
+      "trabajos/semana11/infografia_13.svg",
+      "trabajos/semana11/infografia_14.svg",
+      "trabajos/semana11/infografia_15.svg",
+      "trabajos/semana11/infografia_16.svg",
+      "trabajos/semana11/infografia_17.svg",
+      "trabajos/semana11/infografia_18.svg",
+      "trabajos/semana11/infografia_19.svg",
+      "trabajos/semana11/infografia_20.svg",
+      "trabajos/semana11/infografia_21.svg",
+      "trabajos/semana11/infografia_22.svg",
+      "trabajos/semana11/infografia_23.svg",
+      "trabajos/semana11/infografia_24.svg",
+      "trabajos/semana11/infografia_25.svg",
+      "trabajos/semana11/infografia_26.svg",
+      "trabajos/semana11/infografia_27.svg",
+      "trabajos/semana11/infografia_28.svg",
+      "trabajos/semana11/infografia_29.svg",
+      "trabajos/semana11/infografia_30.svg",
+      "trabajos/semana11/infografia_31.svg",
+      "trabajos/semana11/infografia_32.svg",
+      "trabajos/semana11/infografia_33.svg"
+    ],
+    "groups": []
+  },
+  "12": {
+    "files": [
+      "trabajos/semana12/infografia_01.svg",
+      "trabajos/semana12/infografia_02.svg",
+      "trabajos/semana12/infografia_03.svg",
+      "trabajos/semana12/infografia_04.svg",
+      "trabajos/semana12/infografia_05.svg",
+      "trabajos/semana12/infografia_06.svg",
+      "trabajos/semana12/infografia_07.svg",
+      "trabajos/semana12/infografia_08.svg",
+      "trabajos/semana12/infografia_09.svg",
+      "trabajos/semana12/infografia_10.svg",
+      "trabajos/semana12/infografia_11.svg",
+      "trabajos/semana12/infografia_12.svg",
+      "trabajos/semana12/infografia_13.svg",
+      "trabajos/semana12/infografia_14.svg",
+      "trabajos/semana12/infografia_15.svg",
+      "trabajos/semana12/infografia_16.svg",
+      "trabajos/semana12/infografia_17.svg",
+      "trabajos/semana12/infografia_18.svg",
+      "trabajos/semana12/infografia_19.svg",
+      "trabajos/semana12/infografia_20.svg",
+      "trabajos/semana12/infografia_21.svg",
+      "trabajos/semana12/infografia_22.svg",
+      "trabajos/semana12/infografia_23.svg",
+      "trabajos/semana12/infografia_24.svg",
+      "trabajos/semana12/infografia_25.svg",
+      "trabajos/semana12/infografia_26.svg",
+      "trabajos/semana12/infografia_27.svg"
+    ],
+    "groups": []
+  },
+  "13": {
+    "files": [],
+    "groups": []
+  },
+  "14": {
+    "files": [],
+    "groups": []
+  },
+  "15": {
+    "files": [],
+    "groups": []
+  },
+  "16": {
+    "files": [],
+    "groups": []
+  }
+}
