@@ -1,15 +1,29 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#10151d" />
-    <meta name="description" content="Suite académica JHEYVX: gestión de estudiantes, inventario, ventas y citas." />
-    <title>JHEYVX Studio · Aplicaciones</title>
-    <script type="module" crossorigin src="./assets/index-B8CDCe0o.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Bd7-4KA2.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071014">
+  <title>JHEYVX TECH · Proyecto de escritorio</title>
+  <style>
+    :root{color-scheme:dark;--bg:#060b0e;--panel:#0d171c;--line:#1c343d;--cyan:#35e6ff;--muted:#9ab1ba;--white:#f2fbfd}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 82% 16%,#07323a 0,transparent 37%),linear-gradient(145deg,#060b0e,#09151a 70%,#070c0f);color:var(--white);font:16px/1.65 Inter,Segoe UI,Arial,sans-serif;min-height:100vh}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.nav{height:78px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ffffff13}.brand{font-weight:800;letter-spacing:.04em}.brand b{color:var(--cyan);margin-right:10px}.back{color:var(--muted);font-size:14px}.hero{padding:78px 0 54px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:.22em;font-weight:800}.hero h1{font-size:clamp(42px,7vw,76px);line-height:.98;letter-spacing:-.06em;margin:18px 0}.hero h1 span{color:var(--cyan)}.lead{color:#c3d4d9;font-size:18px;max-width:640px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{padding:13px 18px;border:1px solid var(--line);border-radius:10px;font-weight:750;transition:.2s}.btn.primary{background:var(--cyan);color:#001317;border-color:var(--cyan)}.btn:hover{transform:translateY(-2px);box-shadow:0 0 25px #35e6ff35}.visual{position:relative;min-height:340px;border-radius:26px;border:1px solid #35e6ff42;background:linear-gradient(145deg,#0d262eaa,#091115d9),url('../../assets/aura-cyan.png') center/cover;overflow:hidden;display:grid;place-items:center}.visual:before,.visual:after{content:"";position:absolute;border:1px solid #35e6ff50;border-radius:50%;width:250px;height:250px;box-shadow:0 0 50px #35e6ff1a}.visual:after{width:185px;height:185px}.orb{position:relative;z-index:1;width:130px;height:130px;display:grid;place-items:center;border-radius:50%;font-weight:900;font-size:32px;color:var(--cyan);border:1px solid #35e6ff;box-shadow:0 0 60px #35e6ff55,inset 0 0 40px #35e6ff22;background:#071419c9}.orb small{display:block;font-size:10px;letter-spacing:.2em;text-align:center;color:#b3d4dc}.facts{display:flex;gap:24px;position:absolute;bottom:22px;left:24px;color:#b2c6cc;font-size:12px}.facts strong{color:var(--white);font-size:16px;display:block}.section{padding:34px 0 80px}.section h2{font-size:26px;margin:0 0 18px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:linear-gradient(145deg,#0e1b20,#0a1216);border:1px solid var(--line);border-radius:16px;padding:22px}.card i{font-style:normal;color:var(--cyan);font-weight:800;letter-spacing:.12em;font-size:12px}.card h3{margin:9px 0 7px}.card p{margin:0;color:var(--muted);font-size:14px}.notice{margin-top:18px;border-left:2px solid var(--cyan);background:#0d1c21;padding:15px 18px;color:#bed0d6;font-size:14px}footer{border-top:1px solid #ffffff13;color:#78919a;padding:25px 0;font-size:13px}@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:48px}.visual{min-height:280px}.grid{grid-template-columns:1fr}.wrap{width:min(100% - 28px,1120px)}}
+  </style>
+</head>
+<body><div class="wrap">
+  <header class="nav"><a class="brand" href="../../index.html"><b>JV</b>JHEYVX TECH</a><a class="back" href="../../trabajos/desarrollo-aplicaciones.html">← Volver a Taller II</a></header>
+  <main>
+    <section class="hero">
+      <div><div class="eyebrow">PROYECTO DE ESCRITORIO · SEMANAS 9–16</div><h1>JHEYVX<br><span>TECH</span></h1><p class="lead">Sistema de inventario y ventas construido en Java Swing. Usa JDBC con base relacional local, registra operaciones de forma segura y separa la interfaz del servicio mediante una conexión cliente-servidor.</p><div class="actions"><a class="btn primary" href="../../archivos-faltantes-para-github/entregas/JHEYVX-Tech-Desktop.jar" download>Descargar aplicación (.jar)</a><a class="btn" href="../../archivos-faltantes-para-github/entregas/desarrollo-apps-u3-u4.zip" download>Descargar proyecto editable (.zip)</a></div></div>
+      <div class="visual" role="img" aria-label="Fondo abstracto negro y cian"><div class="orb">JV<small>DESKTOP</small></div><div class="facts"><span><strong>JAVA</strong>Swing</span><span><strong>JDBC</strong>H2 local</span><span><strong>TCP</strong>hilos</span></div></div>
+    </section>
+    <section class="section"><h2>Qué incluye</h2><div class="grid">
+      <article class="card"><i>01 / DATOS</i><h3>Inventario conectado</h3><p>Alta, edición, búsqueda y baja lógica con validación de precio y existencias.</p></article>
+      <article class="card"><i>02 / VENTAS</i><h3>Registro transaccional</h3><p>Calcula subtotales, revisa stock y registra la venta junto al descuento de inventario dentro de una transacción.</p></article>
+      <article class="card"><i>03 / ARQUITECTURA</i><h3>Cliente y servidor</h3><p>Servicio TCP local con pool de hilos y mensajes JSON; la interfaz Swing consume el servicio.</p></article>
+      <article class="card"><i>04 / PERSISTENCIA</i><h3>Base local</h3><p>H2 crea sus tablas al iniciar y conserva los cambios en la carpeta <code>data</code>.</p></article>
+      <article class="card"><i>05 / CONTROL</i><h3>Validaciones y pruebas</h3><p>Pruebas automatizadas de CRUD, reglas de negocio, rollback por stock insuficiente y comunicación TCP.</p></article>
+      <article class="card"><i>06 / ENTREGA</i><h3>Ejecutable y código</h3><p>JAR autocontenido y ZIP con fuentes, instrucciones, esquema SQL y pruebas.</p></article>
+    </div><div class="notice"><strong>Importante:</strong> esta es una aplicación de escritorio, no se ejecuta dentro de una pestaña del navegador. Descarga el JAR y ábrelo con Java 8 o posterior. El portafolio sirve para presentar y descargar el proyecto; no hace falta un VPS.</div></section>
+  </main><footer>JV · Jheyssun Breydi Vargas Taipe · Portafolio Académico</footer>
+</div></body></html>

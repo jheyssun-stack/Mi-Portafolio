@@ -1,40 +1,19 @@
-# Semana 15 · Compilación y publicación gratuita
+# Semana 15 · Empaquetado y ejecución del proyecto
 
-**Autor:** Jheyssun Breydi Vargas Taipe  
-**Proyecto:** JHEYVX Studio · AULORA, INVENTRA, MERCATO y CITADA  
-**Entrega editable:** `proyectos/taller-apps-u3-u4/`
+**Proyecto:** JHEYVX TECH · aplicación de escritorio Java Swing
 
-## Objetivo de aprendizaje
-Vite genera archivos estáticos listos para servir.
+## Propósito y desarrollo
 
-## Diseño aplicado
+Empaquetar clases y dependencias en un JAR ejecutable con clase principal declarada. La aplicación no requiere VPS: corre localmente y guarda sus datos en la carpeta data.
 
-### 1. Vite genera archivos estáticos listos para servir.
+## Flujo técnico
 
-En la aplicación, este criterio se aplica con entradas verificadas, datos ficticios y estados visibles. El código correspondiente se encuentra en `src/`; las reglas compartidas están en `src/lib/`.
-### 2. GitHub Pages puede publicar la web estática del portafolio.
+`mvn clean test package → JAR autocontenido → Java 8+ → base local H2`
 
-En la aplicación, este criterio se aplica con entradas verificadas, datos ficticios y estados visibles. El código correspondiente se encuentra en `src/`; las reglas compartidas están en `src/lib/`.
-### 3. Supabase Free ofrece backend con cuotas y pausa por inactividad.
+## Resultado y evidencia
 
-En la aplicación, este criterio se aplica con entradas verificadas, datos ficticios y estados visibles. El código correspondiente se encuentra en `src/`; las reglas compartidas están en `src/lib/`.
-### 4. No requiere VPS; compilar con npm run build.
+Artefacto generado: target/JHEYVX-Tech-Desktop.jar. GitHub Pages presenta y distribuye los archivos, pero no ejecuta Swing.
 
-En la aplicación, este criterio se aplica con entradas verificadas, datos ficticios y estados visibles. El código correspondiente se encuentra en `src/`; las reglas compartidas están en `src/lib/`.
+## Herramientas y componentes
 
-## Evidencias y cómo comprobar
-1. Ejecutar `npm install` y `npm run dev`.
-2. Realizar el flujo de la semana en el módulo nombrado.
-3. Ejecutar `npm test` y `npm run build`.
-4. Para almacenamiento compartido, ejecutar `supabase/taller-apps-u3-u4.sql`; sin SQL la app opera localmente.
-
-## Alcance y límites
-Los registros iniciales son datos de demostración. El modo público no tiene autenticación; no se deben cargar datos personales reales. Supabase Free puede pausar proyectos con poca actividad; GitHub Pages solo aloja la interfaz estática.
-
-## Infografía
-Consulta `../infografias/taller-semana-15-infografia.svg`.
-
-
-## Artefacto y publicación
-
-`npm run build` genera la carpeta `dist/` con HTML, CSS, JavaScript minificado y el Worker. El `base: "./"` permite alojarla dentro de la ruta anidada del portafolio `aplicacion/desarrollo-u3-u4/`. Al subir el directorio al repositorio, GitHub Pages publica la interfaz estática. Supabase Free hospeda la base dentro de sus cuotas, pero pausa proyectos inactivos; no se requiere una cuenta de VPS ni se sostiene una API Node propia.
+Maven Shade Plugin · Manifest Main-Class · JAR

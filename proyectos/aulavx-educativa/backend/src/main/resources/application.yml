@@ -1,0 +1,41 @@
+server:
+  port: ${SERVER_PORT:8080}
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/aulavx?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    username: ${SPRING_DATASOURCE_USERNAME:aulavx}
+    password: ${SPRING_DATASOURCE_PASSWORD:aulavx_local}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  jackson:
+    default-property-inclusion: non_null
+app:
+  jwt:
+    secret: ${JWT_SECRET:local-development-secret-change-this-32-chars-minimum}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:240}
+  cors:
+    allowed-origin: ${FRONTEND_ORIGIN:http://localhost:5173}
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:h2:mem:aulavx;MODE=MySQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+app:
+  jwt:
+    secret: test-secret-key-with-at-least-32-characters-long
+    expiration-minutes: 20
+  cors:
+    allowed-origin: http://localhost:5173
