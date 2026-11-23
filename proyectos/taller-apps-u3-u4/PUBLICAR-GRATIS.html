@@ -1,0 +1,24 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Publicar gratis · JHEYVX</title><style>*{box-sizing:border-box}body{margin:0;background:#0b1014;color:#dce3df;font:16px/1.75 system-ui,Segoe UI,sans-serif}main{max-width:900px;margin:36px auto;padding:36px;background:#121a1f;border:1px solid #29353b;border-radius:16px}h1,h2{color:#f2f1eb;line-height:1.3}h1{font-size:2.35rem}h2{margin-top:2rem}a{color:#d8b77e}code{color:#d6c397;background:#1e292d;padding:.15em .35em;border-radius:4px}li{margin:.4em 0}@media(max-width:650px){main{margin:0;padding:24px 17px;border-radius:0}h1{font-size:1.8rem}}</style><main><h1>Publicar gratis en el portafolio (sin VPS)</h1>
+<p>No hace falta crear una cuenta de VPS para una app hecha con React que se compila a HTML, CSS y JavaScript. GitHub Pages puede alojar esa parte desde el repositorio público de tu portafolio.</p>
+<h2>Publicar cambios de la app</h2>
+<ol>
+<li>Abre esta carpeta en VS Code.</li>
+<li>Si editaste el proyecto, abre una terminal en esta carpeta y ejecuta <code>npm install</code> y después <code>npm run build</code>.</li>
+<li>Copia el contenido de <code>dist/</code> a la carpeta <code>aplicacion/desarrollo-u3-u4/</code> del repositorio <code>Mi-Portafolio</code>, reemplazando los archivos anteriores.</li>
+<li>Guarda los cambios con GitHub Desktop y pulsa <strong>Push origin</strong>.</li>
+<li>La dirección de la app será <code>https://jheyssun-stack.github.io/Mi-Portafolio/aplicacion/desarrollo-u3-u4/</code> cuando Pages termine de actualizarse.</li>
+</ol>
+<p>La compilación ya se incluye en <code>dist/</code>. Si solo quieres publicarla por primera vez, copia esa carpeta sin recompilar.</p>
+<h2>Activar almacenamiento compartido</h2>
+<p>Sin base de datos, cada navegador guarda sus datos en su propio almacenamiento local. Para que varios dispositivos compartan los registros:</p>
+<ol>
+<li>Abre Supabase y entra al proyecto JHEYVX existente.</li>
+<li>Abre <strong>SQL Editor</strong> y crea una consulta nueva.</li>
+<li>Abre <code>supabase/taller-apps-u3-u4.sql</code> en VS Code, copia el contenido completo y pégalo en la consulta.</li>
+<li>Pulsa <strong>Run</strong>. Debe finalizar sin errores.</li>
+<li>Abre la app y revisa la etiqueta de estado. Si indica “Supabase”, los cambios se guardan en la base compartida.</li>
+</ol>
+<p>El esquema permite acceso anónimo porque el requisito del portafolio es no tener inicio de sesión. Por eso los datos escritos allí son públicos y cualquiera puede leerlos, cambiarlos o borrarlos. Usa solo ejemplos ficticios; nunca guardes nombres, teléfonos, notas reales ni contraseñas. La clave del navegador debe ser <code>publishable</code>/<code>anon</code>; nunca uses <code>service_role</code>.</p>
+<h2>Límites del plan gratuito</h2>
+<p>GitHub Pages sirve el frontend estático, pero no mantiene procesos de servidor Node.js, Java ni un VPS encendido. Las operaciones de base de datos se ejecutan con Supabase. Su plan Free tiene cuotas limitadas y los proyectos con poca actividad pueden pausarse después de una semana; se reactivan desde el panel. La app continúa funcionando localmente en el navegador mientras el backend esté pausado, pero esos cambios no se comparten hasta que vuelva a estar activo.</p>
+<p>Consulta <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Pages</a>, <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits">límites de GitHub Pages</a> y <a href="https://supabase.com/pricing">precios actuales de Supabase</a> antes de usarla con más tráfico o archivos.</p></main></html>
